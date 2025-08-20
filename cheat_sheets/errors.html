@@ -1,0 +1,23 @@
+<p id="melding"></p>
+
+<script>
+    //Extracted user information, saved to username variable user_name
+    const user_name = "Bax"
+
+    //Collected birthyear of user, added to birthyear variable
+    constt birthyear = 1998
+    //Error in constt, one 't' too much
+
+    //We calculate the age of the user by subtracting the birthyear from the current year
+    const age = 2022 - user=birthyear
+    //Error. 'age' should be assigned to 'let' variable, and there is a typo in the assignment operator
+
+    //We make a text to print by using contactination
+    const utskrift = "Hei " user_name + " (" + age + "år)";
+    //Error. Print from script to console is not used with variable cmnd. 'console.log' should be used instead of 'const', and the string concatenation is incorrect.
+
+    //...and write it to the HTML element with id "melding"
+    document.getElementById("melding").innerHTML = utskrift; 
+    //Error. utskrift is wrong cmnd, cannot print
+</script>
+    //Error. The script does not run insida an html element.
