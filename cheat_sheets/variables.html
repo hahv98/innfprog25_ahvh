@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Variables Cheat Sheet</title>
+</head>
+<body>
+    <h1>Trial and Error with variables</h1>
+    <p id="name"></p>
+    <p id = "age"></p>
+    <p id = "message"></p>
+
+    <script>
+        const name = "Audun";
+        // name = "Audun"; // Name is a constant, cannot be reassigned 
+        console.log(name);               //Output name to console
+        document.getElementById("name").innerHTML = name;
+
+        const birthYear = 1998;          // Year of birth, cannot be changed
+        let year = 2025;                 // Current year, can be changed if needed
+        let age = year - birthYear;      // Calculate age based on current year and birth year
+        console.log(age);                // Output age to console
+        document.getElementById("age").innerHTML = age;
+        document.getElementById("message").innerHTML = "Hello, my name is " + name + ", and I am " + age + " years old."
+        // Output message to console in a completed sentence
+    </script>
+</body>
+</html>
