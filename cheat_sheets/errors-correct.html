@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 2 - Correct errors</title>
+</head>
+<body>
+    <p id="melding"></p>
+    <script>
+        //Extracted user information, saved to username variable user_name
+        const user_name = "Bax";
+
+        //Collected birthyear of user, added to birthyear variable
+        const birthyear = 1998;
+
+        //We calculate the age of the user by subtracting the birthyear from the current year
+        let year = 2025;
+        let age = year - birthyear;
+
+        //We make a text to print by using contactination
+        console.log(user_name + age);
+
+        //...and write it to the HTML element with id "melding"
+        document.getElementById("melding").innerHTML = "Hello, my name is " + user_name + ", and I am " + age + " years old.";
+         
+    </script>    
+</body>
+</html>
