@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id=average></p>
+    <script>
+        const dad_name = "Father";          let dad_age = 37;
+        const mom_name = "Mother";          let mom_age = 32;
+        const daughter_name = "Daughter";   let daughter_age = 7;
+        const son_name = "Son";             let son_age = 2;      let member_count = 4;
+        // Calculate the average age of the family members
+        // The average age is calculated by summing the ages and dividing by the number of members
+        let average_age = (dad_age + mom_age + daughter_age + son_age) / member_count;
+        document.getElementById("average").innerHTML = "The average age of the family is: " + average_age + " years.";
+    </script>
+</body>
+</html>
