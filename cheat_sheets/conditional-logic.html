@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>Er myndig? <span id="above18"></span></p>
+    <p id="driver-license"></p>
+    <script>
+        //Personal info
+        const age = 27;
+        const hasDriverLicense = true;
+        //HTML elements to manipulate
+        const above18 = document.getElementById("above18");
+        const license = document.getElementById("driver-license");
+
+        //Check for legal age (Conditional logic)
+        if(age >= 18) {     //Operator: >= (greater than or equal to)
+            above18.innerHTML = "Yes";
+        
+        //Check for driver license (Conditional logic)
+        if(hasDriverLicense === true) {     //Operator: === (strict equality) / same datatype
+            license.innerHTML = "Has a driver's license";
+        } else {
+            license.innerHTML = "Does not have a driver's license";
+        }
+        
+        } else {
+            above18.innerHTML = "No";
+        }
+    </script>
+</body>
+</html>

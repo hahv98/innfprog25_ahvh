@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 2 - Conditional Logic</title>
+</head>
+<body>
+    <p id="printed"></p>
+    <script>
+        const age = 27;
+        let text = "";
+
+        if (age < 18) {
+            text = "I am not of legal age"
+        } else if (age >= 18 && age <= 62) {
+            text = "I am of legal age, and ready for college or work life"
+        } else  {
+            text = "I am ready to retire"
+        }
+        document.getElementById("printed").innerHTML = text;
+    </script>
+</body>
+</html>

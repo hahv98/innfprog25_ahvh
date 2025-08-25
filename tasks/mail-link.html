@@ -3,16 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Task 4</title>
 </head>
 <body>
     <p id="maillink"></p>
+    
     <script>
         const name = "Audun";
         const mail = "henden.ahv@gmail.com";
 
-        const emailLink = `<a href="mailto:${mail}">${name}</a>`;
-        document.getElementById("maillink").innerHTML = `Send an email to ${emailLink}`;
+        const emailLink = `<a href="mailto:${mail}"> Send mail to ${name}</a>`;
+
+        document.getElementById("maillink").innerHTML = emailLink
     </script>
 </body>
 </html>
