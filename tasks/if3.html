@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id="printed"></p>
+    <script>
+        const barn1 = "girl";       let nmb_girls = 0;
+        const barn2 = "boy";        let nmb_boys = 0;
+        const barn3 = "girl";
+        let text = "";
+        
+        if (barn1 === "girl") {
+            nmb_girls += 1;
+        }   else {
+            nmb_boys += 1;
+        }
+        if (barn2 === "girl") {
+            nmb_girls += 1;
+        }   else {
+            nmb_boys += 1;
+        }
+        if (barn3 === "girl") {
+            nmb_girls += 1;
+        }   else {
+            nmb_boys += 1;
+        }
+        
+        text = "Boys: " + nmb_boys + " Girls: " + nmb_girls;
+
+        document.getElementById("printed").innerHTML = text;
+    </script>
+
+        
+</body>
+</html>

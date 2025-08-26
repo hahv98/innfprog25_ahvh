@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 4 - Conditional Logic</title>
+</head>
+<body>
+    <p id="printed"></p>
+    <script>
+        const ITF19019_grade = "A"; 
+        const ITF10511_grade = "F"; 
+        const ITF19019_passed = ITF19019_grade === "A" ? true : false;
+        const ITF10511_passed = ITF10511_grade === "A" ? true : false;
+
+        let countPassed = 0;
+
+        if (ITF19019_passed === true) {
+            countPassed += 1;
+        }
+
+        if (ITF10511_passed === true) {
+            countPassed += 1;
+        }
+
+        const printText = `You have passed ${countPassed} of 2 courses.`;
+
+        document.getElementById("printed").innerHTML = printText;
+    </script>
+</body>
+</html>
