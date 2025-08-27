@@ -1,0 +1,17 @@
+Array = liste med informasjon.
+    - Typisk uorganisert informasjon (Hierarki eller navnsetting = ikke viktig)
+
+Object - liste med informasjon
+    - Typisk organisert informasjon
+    EKSEMPEL
+    - const car ={}
+    - manufacturer:"Hyundai";
+    - model:"Ioniq 5";
+    - type:"Electric";
+    - color:"White";
+    osv.
+
+I en array hentes verdier med INDEX
+
+I et Object hentes verdier med navngitte NØKLER
+

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conditional Logic Cheat Sheet</title>
+</head>
+<body>
+    <h2>Are you qualified to play?</h2>
+    <p id="carmsg"></p>
+
+    <h2>Can the player open the door?</h2>
+    <p id="doormsg"></p>
+
+    <h2>Is player eligible to prestige?</h2>
+    <p id="level"></p>
+
+    <script>
+        // Age and Terms and Conditions (TC) status
+        const age = 27; // Change age value to test different outputs.
+        const tc_passed = true; // Change to true or false to test different outputs.
+        const lvl = 85; // Change level value to test different outputs.
+
+        //if-test : If your age is 18 or older AND you have passed TC, you are qualified. 
+        if (age >= 18 && tc_passed === true) {
+            document.getElementById("carmsg").innerHTML = "You are qualified to have a play.";
+        } else {
+            document.getElementById("carmsg").innerHTML = "You are not qualified to have a play.";
+        }
+
+        //Test if door is locked, maybe if user has keys in backpack?
+        const doorLocked = false; // Change to true or false to test different outputs.
+        const backpack = "key"; // Change to "key" or "" to test different outputs.
+
+        let text = document.getElementById("doormsg");
+
+        //if-test : If the door is not locked, you can enter.
+        if(doorLocked === true){
+            text.innerHTML = "The door is locked, enter key.";
+        } else {
+            if(backpack === "key"){
+                text.innerHTML = "Door is unlocked, please enter.";
+            } else {
+                text.innerHTML = "The door is locked. enter key.";
+            }
+        }
+
+        //Check possible prestige level.
+        let prestigemsg = document.getElementById("level");
+
+        if(lvl >= 90 && lvl <= 99){
+            prestigemsg.innerHTML = "You can prestige to level 1.";
+        } else if(lvl === 100){
+            prestigemsg.innerHTML = "You have reached max level, you can prestige to level 1";
+        } else {
+            prestigemsg.innerHTML = `You need to reach level 90 to prestige, you need ${90-lvl} levels to reach.`;
+        }
+
+    </script>
+</body>
+</html>
