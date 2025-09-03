@@ -8,35 +8,19 @@
 <body>
     <ul id="events"></ul>
     <script>
-        const eventsarray = [
-            {
-                year: 1969,
-                event: "The Creation of ARPANET"
-            },
-            {
-                year: 1971,
-                event: "The first E-mail is sent"
-            },
-            {
-                year: 1981,
-                event: "IBM launches a PC"
-            },
-            {
-                year: 1998,
-                event: "Google was founded"
-            },     
+        const events = [
+            { year: 1969, event: "The Creation of ARPANET"},
+            { year: 1971, event: "The first E-mail is sent"},
+            { year: 1981, event: "IBM launches a PC"},
+            { year: 1990, event: "Tim Berners Lee launches the first website"},
+            { year: 1998, event: "Google was founded"}   
         ]
-        eventsarray.sort()
 
-        //const eventListHTML = ""
+        let eventListHTML = ""
 
-        eventsarray.map(x => {
-            events.innerHTML += `
-            <li>
-                <p>${x.year}: ${x.event}</p>
-            </li>`
-        })
+        events.map((event) => eventListHTML += `<li> ${event.year}: ${event.event}</li>`)
         console.log(events)
+        document.getElementById("events").innerHTML = eventListHTML
     </script>
 </body>
 </html>
