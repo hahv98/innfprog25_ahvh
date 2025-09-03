@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 4 - Årstall</title>
+</head>
+<body>
+    <ul id="events"></ul>
+    <script>
+        const years = [1066, 1564, 1455, 1346, 1215, 666]
+        console.log(years)
+        //years.sort().reverse() works if all numbers are of equal count (i.e. 4 digits in every number)
+        years.sort(function(a, b){return (b-a)})
+
+        let eventHTML = ""
+        
+        years.map(y => {
+            eventHTML +=
+            `<li>${y}</li>`
+        })
+
+        document.getElementById("events").innerHTML = eventHTML;
+
+    </script>
+</body>
+</html>

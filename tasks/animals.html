@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 2 - Translate to english</title>
+</head>
+<body>
+    <p id="setning"></p>
+    <script>
+        const dyr = ["katt", "hund", "påfugl", "gekko", "pappegøye", "ørn", "hai", "delfin", "pelikan", "edderkopp"]
+        const animals = ["cat", "dog", "peacock", "gecko", "parrot", "eagle", "shark", "dolphin", "pelican", "spider"]
+        
+        const dyrIndex1 = 2
+        const dyrIndex2 = 8
+        const translation = `Et dyr heter ${dyr[dyrIndex1]} på norsk. Det heter ${animals[dyrIndex1]} på engelsk. Vi har også dyret ${dyr[dyrIndex2]}, som heter ${animals[dyrIndex2]} på engelsk.`
+
+        document.getElementById("setning").innerHTML = translation
+    </script>
+</body>
+</html>

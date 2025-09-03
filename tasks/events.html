@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 5 - Årstall og hendelser</title>
+</head>
+<body>
+    <ul id="events"></ul>
+    <script>
+        const eventsarray = [
+            {
+                year: 1969,
+                event: "The Creation of ARPANET"
+            },
+            {
+                year: 1971,
+                event: "The first E-mail is sent"
+            },
+            {
+                year: 1981,
+                event: "IBM launches a PC"
+            },
+            {
+                year: 1998,
+                event: "Google was founded"
+            },     
+        ]
+        eventsarray.sort()
+
+        //const eventListHTML = ""
+
+        eventsarray.map(x => {
+            events.innerHTML += `
+            <li>
+                <p>${x.year}: ${x.event}</p>
+            </li>`
+        })
+        console.log(events)
+    </script>
+</body>
+</html>

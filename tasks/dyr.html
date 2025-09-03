@@ -6,14 +6,14 @@
     <title>Task 1 - Oversikt over dyr</title>
 </head>
 <body>
-    <p id="text"></p>
-    <p>Her er det listet opp noen dyr, for eksempel <span id="index01">0</span> og <span id="index02">0</span></p>
+    <p id="utskrift"></p>
     <script>
-        const animals = ["Cat", "Dog", "Goldfish", "Gecko", "Parrot", "Eagle", "Shark", "Dolphin", "Pelican", "Lemur"]
-        animals.sort(function(a, b){return a-b})
-        const index1 = 3;   const index2 = 7;
+        const animals = ["katt", "hund", "påfugl", "gekko", "pappegøye", "ørn", "hai", "delfin", "pelikan", "edderkopp"]
+
+        const text = `Her er det listet opp noen dyr, for eksempel ${animals[3]} & ${animals[7]}.`
 
         console.log(animals)
+        document.getElementById("utskrift").innerHTML = text
     </script>
 </body>
 </html>
