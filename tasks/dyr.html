@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 1 - Oversikt over dyr</title>
+</head>
+<body>
+    <p id="text"></p>
+    <p>Her er det listet opp noen dyr, for eksempel <span id="index01">0</span> og <span id="index02">0</span></p>
+    <script>
+        const animals = ["Cat", "Dog", "Goldfish", "Gecko", "Parrot", "Eagle", "Shark", "Dolphin", "Pelican", "Lemur"]
+        animals.sort(function(a, b){return a-b})
+        const index1 = 3;   const index2 = 7;
+
+        console.log(animals)
+    </script>
+</body>
+</html>
