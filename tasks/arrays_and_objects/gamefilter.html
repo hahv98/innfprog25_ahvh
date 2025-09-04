@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 4 - Filtrer spill-titler</title>
+</head>
+<body>
+    <h1>iOS Games</h1>
+    <ul id="filter"></ul>
+
+    <script>
+        const games = [
+            {
+                title: "Angry Birds",
+                platforms: ["iOS", "Android"]
+            },
+            {
+                title: "Nongram",
+                platforms: ["Android"]
+            },
+            {
+                title: "Plants vs Zombies",
+                platforms: ["iOS", "Android", "Windows", "MacOS"]
+            },
+            {
+                title: "Punball",
+                platforms: ["Windows", "Android"]
+            },
+            {
+                title: "Woordle",
+                platforms: ["iOS", "MacOS"]
+            }
+        ]
+        const aplatform = "iOS"
+        const iOSgames = games.filter((game) => game.platforms.includes(aplatform))
+
+        let gamesinclude = ""
+
+        iOSgames.map((game) => gamesinclude +=
+        `<li>${game.title}</li>`).join("")
+        
+        console.log(games)
+        document.getElementById("filter").innerHTML = gamesinclude
+
+    </script>
+</body>
+</html>
