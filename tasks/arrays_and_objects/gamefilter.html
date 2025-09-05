@@ -38,7 +38,7 @@
         let gamesinclude = ""
 
         iOSgames.map((game) => gamesinclude +=
-        `<li>${game.title}</li>`).join("")
+        `<li>${game.title} is available on ${aplatform}.</li>`).join("")
         
         console.log(games)
         document.getElementById("filter").innerHTML = gamesinclude
