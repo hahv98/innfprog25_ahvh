@@ -78,9 +78,9 @@
         //TODO: config
         const gameConfig = {
             player: "Bax",
-            energy: 15,
+            energy: 27,
             points: 69,
-            duration: 666
+            duration: 420
         }
        console.log(gameConfig)
        
@@ -92,22 +92,33 @@
             functions: 7
         }
 
+        function updateStaticUI() {
+        
         //TODO: print playerinfo to HTML
         if(gameConfig.player === "") {
             document.getElementById("playerName").innerHTML = "Waiting for player..."
+            for(key in gameConfig){
+                key === playerName ? playerName : gameConfig[key] = 0;
+            }
+
+            for(key in notebook){
+                notebook[key] = 0
+            }
         } else {
             document.getElementById("playerName").innerHTML = gameConfig.player
         }
         document.getElementById("energy").innerHTML = gameConfig.energy
         document.getElementById("points").innerHTML = gameConfig.points
         document.getElementById("duration").innerHTML = gameConfig.duration
+        
         //TODO: print notebook info to HTML
         document.getElementById("variables").innerHTML = notebook.variables
         document.getElementById("arrays").innerHTML = notebook.arrays
         document.getElementById("loops").innerHTML = notebook.loops
         document.getElementById("functions").innerHTML = notebook.functions
         //(BONUS) TODO: function for all prints
-        
+        }
+        updateStaticUI()
     </script>
 </body>
 </html>
