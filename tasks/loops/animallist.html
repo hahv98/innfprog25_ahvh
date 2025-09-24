@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animal List</title>
+</head>
+<body>
+    <ul id="animals"></ul>
+
+    <script>
+        const animals = ["Horse", "Cow", "Cat", "Dog", "Pig", "Parrot", "Owl", "Sardine", "Shark", "Wolf"]
+
+        let htmlString = ""
+
+        for(let teller = 0; teller < animals.length; teller++) {
+            console.log("Animal in index" + teller + ": " + animals[teller])
+            htmlString  += `<li>${animals[teller]}</li>`
+        }
+
+        document.getElementById("animals").innerHTML = htmlString
+    </script>
+</body>
+</html>

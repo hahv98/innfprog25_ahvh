@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>While loop</title>
+</head>
+<body>
+    <ul id="nedtelling"></ul>
+
+    <script>
+        let htmlString = ""
+        
+        let teller = 0;
+
+        while(teller <= 10) {
+            console.log(teller)
+            teller = teller + 1;
+
+            htmlString += `<li>${teller === 11 ? "We have take off" : teller}</li>`
+        }
+
+        // for(let teller = 10; teller >= 0; teller--){
+        //     console.log(teller)
+        
+        // htmlString += `<li>${teller === 0 ? "We have take off" : teller}</li>`
+        // }
+        
+        document.getElementById("nedtelling").innerHTML = htmlString
+    </script>
+</body>
+</html>
