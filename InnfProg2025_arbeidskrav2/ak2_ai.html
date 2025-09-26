@@ -16,7 +16,7 @@
     <p>Finnes ordet "problemløsning" i Programmeringsord-arrayen? <span id="problemlosning_sjekk"></span></p>
     <h2>Problem 3</h2>
     <p>Gjennomsnittet av tallene i tall_array_en er <span id="avg_array_one"></span></p>
-    <p>Gjennomsnittet av tallene i tall_array_to er <span id="avg_array_one"></span></p>
+    <p>Gjennomsnittet av tallene i tall_array_to er <span id="avg_array_two"></span></p>
 
     <script>
         //PROBLEM 1
@@ -27,12 +27,52 @@
         const programming_words = ["variabel","funksjon","array","objekt","loop","betingelse","klasse","rekursjon","algoritme","kompilator"]
 
         //AI-kode for å løse problem 2 her.
+        function checkAndUpdate(word, elementId) {
+            const element = document.getElementById(elementId);
+            if (!element) return; // Safety check in case the element doesn't exist
+
+            if (programming_words.includes(word)) {
+                element.innerHTML = "Ja";
+            } else {
+                element.innerHTML = "Nei";
+            }
+        }
+
+        // Call the function for each word-element pair
+        checkAndUpdate("betingelse", "betingelse_sjekk");
+        checkAndUpdate("algoritme", "algoritme_sjekk");
+        checkAndUpdate("problemlosning", "problemlosning_sjekk");
+
 
         //PROBLEM 3
         const tall_array_en = [9, 13, 5, 62, 11, 6, 28, 31, 17]
         const tall_array_to = [23, 76, 88, 13, 56, 90, 42]
 
         //AI-kode for å løse problem 3 her.
+
+        function calculateAverage(arr) {
+        if (arr.length === 0) return 0; // Avoid division by zero
+        const sum = arr.reduce((acc, val) => acc + val, 0);
+        return sum / arr.length;
+        }
+
+        // Example usage:
+        const average1 = calculateAverage(tall_array_en);
+        console.log("Average:", average1);
+        
+        function calculateAverage(arr) {
+        if (arr.length === 0) return 0; // Avoid division by zero
+        const sum = arr.reduce((acc, val) => acc + val, 0);
+        return sum / arr.length;
+        }
+
+        // Example usage:
+        const average2 = calculateAverage(tall_array_to);
+        console.log("Average:", average2);
+
+        document.getElementById("avg_array_one").innerHTML = average1
+        document.getElementById("avg_array_two").innerHTML = average2
+
     </script>
 </body>
 </html>

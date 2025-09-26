@@ -16,7 +16,7 @@
     <p>Finnes ordet "problemløsning" i Programmeringsord-arrayen? <span id="problemlosning_sjekk"></span></p>
     <h2>Problem 3</h2>
     <p>Gjennomsnittet av tallene i tall_array_en er <span id="avg_array_one"></span></p>
-    <p>Gjennomsnittet av tallene i tall_array_to er <span id="avg_array_one"></span></p>
+    <p>Gjennomsnittet av tallene i tall_array_to er <span id="avg_array_two"></span></p>
 
     <script>
         //PROBLEM 1
@@ -26,16 +26,68 @@
         
         //Din kode for å løse problem 1 her.
 
+        for(let i = 0; i <= 6; i++){
+         random_color_code += hexadecimal_characters[Math.floor(Math.random() * 16)]
+        }
+        console.log(random_color_code)
+        document.getElementById("random_color").innerHTML = random_color_code
+
         //PROBLEM 2
         const programming_words = ["variabel","funksjon","array","objekt","loop","betingelse","klasse","rekursjon","algoritme","kompilator"]
 
         //Din kode for å løse problem 2 her.
+        function checkValue(programming_words) {
+        const betingelse = document.getElementById("betingelse_sjekk")
+        const algoritme = document.getElementById("algoritme_sjekk")
+        const problos = document.getElementById("problemlosning_sjekk")
+
+        if(programming_words.includes("betingelse")) {
+            betingelse.innerHTML = "Ja"
+        } else {
+            betingelse.innerHTML = "Nei"
+        }
+
+        if(programming_words.includes("algoritme")) {
+            algoritme.innerHTML = "Ja"
+        } else {
+            algoritme.innerHTML = "Nei"
+        }
+        
+        if(programming_words.includes("problemlosning")) {
+            problos.innerHTML = "Ja"
+        } else {
+            problos.innerHTML = "Nei"
+        }
+        }
+        checkValue(programming_words)
 
         //PROBLEM 3
         const tall_array_en = [9, 13, 5, 62, 11, 6, 28, 31, 17]
         const tall_array_to = [23, 76, 88, 13, 56, 90, 42]
 
         //Din kode for å løse problem 3 her.
+        function avgarray(tall_array_en) {
+            let sum = 0;
+            for(let i = 0; i < tall_array_en.length; i++) {
+                sum += tall_array_en[i]
+            }
+            const avg = sum / tall_array_en.length
+            console.log(avg)
+        }
+
+        function avgarray(tall_array_to) {
+            let sum = 0;
+            for(let i = 0; i < tall_array_to.length; i++) {
+                sum += tall_array_to[i]
+            }
+            const avg = sum / tall_array_to.length
+            console.log(avg)
+        }
+        
+        avgarray(tall_array_en)
+        avgarray(tall_array_to)
+
+
     </script>
 </body>
 </html>
