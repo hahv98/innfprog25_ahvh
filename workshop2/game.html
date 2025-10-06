@@ -26,13 +26,13 @@
         </section>
         <img src="icons/c3_logo.svg" alt="Code Concept Collector" />
         <nav>
-            <button id="notebookToggler" onClick="toggleVis(notebookbtn)"><img src="icons/notebook.svg"/>Åpne kladdeboka <span class="shortcut">n</span></button>
-            <button id="infoToggler" onClick="toggleVisibility(info)">Info / Hvordan spille <span class="shortcut">i</span></button>
+            <button id="notebookToggler"><img src="icons/notebook.svg"/>Åpne kladdeboka <span class="shortcut">n</span></button>
+            <button id="infoToggler">Info / Hvordan spille <span class="shortcut">i</span></button>
         </nav>
     </header>
     <main>
         
-        <section id="notebookbtn" class="hidden">
+        <section id="notebook" class="hidden">
             <div id="notebook-page">
                 
                 <h2>Notater</h2>
@@ -116,18 +116,9 @@
 
         updateStaticUI()
 
-        function toggleVisibility(info) {
-            const element = document.getElementById("info")
-            element.classList.toggle("hidden")
-            if(element.style.display === "none") {
-                element.style.display = "block";
-            } else {
-                element.style.display = "none";
-            }
-        }
-        function toggleVis(notebookbtn) {
-            const element = document.getElementById("notebookbtn")
-            element.classList.toggle("hidden")
+        function toggleVisibility(elementid) {
+            const element = document.getElementById(elementid)
+            element.classList.contains("hidden")
             if(element.style.display === "none") {
                 element.style.display = "block";
             } else {
@@ -137,12 +128,12 @@
 
         document.addEventListener("keydown", function(event) {
             if(event.code === "KeyI") {
-                toggleVisibility(info)
+                toggleVisibility("info")
             }
         })
         document.addEventListener("keydown", function(event) {
             if(event.code === "KeyN") {
-                toggleVis(notebookbtn)
+                toggleVisibility("notebook")
             }
         })
     </script>
