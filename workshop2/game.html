@@ -125,17 +125,38 @@
                 element.style.display = "none";
             }
         }
-
         document.addEventListener("keydown", function(event) {
             if(event.code === "KeyI") {
                 toggleVisibility("info")
-            }
-        })
-        document.addEventListener("keydown", function(event) {
-            if(event.code === "KeyN") {
+            } else if(event.code === "KeyN") {
                 toggleVisibility("notebook")
             }
         })
+        
+        document.getElementById("notebookToggler").addEventListener("click", function() {
+            toggleVisibility("notebook")
+        })
+        document.getElementById("infoToggler").addEventListener("click", function() {
+            toggleVisibility("info")
+        })
+
+        function updateSingleStaticUI(element, value) {
+            console.log(element, value)
+            document.getElementById(element).innerHTML = value
+        }
+        updateSingleStaticUI("points", 420)
+        updateSingleStaticUI("energy", 69)
+
+        function updateConfigValue(obj, configType, value) {
+            obj === "gameConfig" ? gameConfig[configType] += value : notebook[configType] += value
+
+            updateStaticUI()
+        }
+
+        updateConfigValue("gameConfig", "points", 10)
+        updateConfigValue("notebook", "arrays", 100)
+        updateConfigValue("notebook", "functions", -2)
+        
     </script>
 </body>
 </html>
