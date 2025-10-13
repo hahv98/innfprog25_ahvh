@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canvas</title>
+    <style>
+        #drawing-area {
+            border: 2px solid black;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="drawing-area"></canvas>
+
+    <script>
+        const mainColor = "#efefef"
+
+
+        const canvas = document.getElementById("drawing-area")
+        const ctx = canvas.getContext("2d")
+
+        //Set canvas size
+        canvas.width = 800
+        canvas.height = 600
+
+        const rectangle = {
+            x: 300,
+            y: 250,
+            width: 200,
+            height: 100
+        }
+
+        const circle = {
+            x: 400,
+            y: 300,
+            radius: 40
+        }
+
+        //Lines in canvas
+        ctx.beginPath()
+        ctx.moveTo(0, 0)
+        ctx.lineTo(800, 600)
+        ctx.moveTo(800, 0)
+        ctx.lineTo(0, 600)
+        ctx.stroke()
+        ctx.closePath()
+
+        //Rectangle
+        ctx.beginPath()
+        ctx.rect(rectangle.x, rectangle.y, rectangle.width,rectangle.height)
+        ctx.fillStyle = mainColor
+        ctx.fill()
+        ctx.closePath()
+
+        //Circle
+        ctx.beginPath()
+        ctx.arc(circle.x, circle.y, circle.radius, 0, Math.PI * 2)
+        ctx.fillStyle = "red"
+        ctx.fill()
+        ctx.closePath()
+
+        //Text
+        ctx.beginPath()
+        ctx.font = "100px Comic Sans MS"
+        ctx.strokeText("5", 360, 450)
+
+        ctx.font = "30px Comic Sans MS"
+        ctx.fillStyle = "gold"
+        ctx.fillText("Audun", 150, 300)
+
+        //Draw existing image
+        const pumpkin = new Image()
+        let pumpkinLoaded = false
+        pumpkin.onload = () => {
+            ctx.drawImage(pumpkin, 0, 0, 64, 64)
+        }
+        pumpkin.src = "pumpkin.png"
+
+
+
+    </script>
+</body>
+</html>

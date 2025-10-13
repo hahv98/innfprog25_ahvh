@@ -71,8 +71,9 @@
             for(let i = 0; i < tall_array_en.length; i++) {
                 sum += tall_array_en[i]
             }
-            const avg = sum / tall_array_en.length
-            console.log(avg)
+            const avg1 = sum / tall_array_en.length
+            console.log(avg1)
+            document.getElementById("avg_array_one").innerHTML = avg1
         }
 
         function avgarray(tall_array_to) {
@@ -85,6 +86,7 @@
         }
         
         avgarray(tall_array_en)
+        
         avgarray(tall_array_to)
 
 
