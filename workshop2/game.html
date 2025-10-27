@@ -72,6 +72,7 @@
                 <p>Gå på en oppgave når denne dukker opp for å løse en oppgave for å score poeng. Du får 10 poeng for å løse en oppgave, 1 poeng for hvert konsept du samler.</p>
             </div>
         </section>
+        <canvas id="drawingarea"></canvas>
     </main>
     <script>
         //PREPARE GAME CONFIG AND VARIABLES
@@ -93,6 +94,9 @@
             arrays: 7
         }
 
+        const canvas = document.getElementById("drawingarea")
+        canvas.width = 800
+        canvas.height = 600
         
 
         //(BONUS) TODO: function for all prints
