@@ -26,13 +26,13 @@
         </section>
         <img src="icons/c3_logo.svg" alt="Code Concept Collector" />
         <nav>
-            <button id="notebookToggler"><img src="icons/notebook.svg"/>Åpne kladdeboka <span class="shortcut">n</span></button>
+            <button id="notebookToggler"><img src="icons/notebook.svg" />Åpne kladdeboka <span class="shortcut">n</span></button>
             <button id="infoToggler">Info / Hvordan spille <span class="shortcut">i</span></button>
         </nav>
     </header>
     <main>
-        <canvas id="anim-area"></canvas>
-        <section id="notebook" class="hidden">
+        
+        <section id="notebook">
             <div id="notebook-page">
                 
                 <h2>Notater</h2>
@@ -72,38 +72,28 @@
                 <p>Gå på en oppgave når denne dukker opp for å løse en oppgave for å score poeng. Du får 10 poeng for å løse en oppgave, 1 poeng for hvert konsept du samler.</p>
             </div>
         </section>
-        <canvas id="drawingarea"></canvas>
     </main>
     <script>
         //PREPARE GAME CONFIG AND VARIABLES
         //TODO: config
         const gameConfig = {
-            playerName: "Bax",
+            player: "Bax",
             energy: 27,
-            points: 420,
-            duration: 69,
-            gamePaused: false,
-            gamePausedTxt: "Press P to pause"
+            points: 69,
+            duration: 420
         }
-
+       
         console.log(gameConfig)
-
-        const canvas = document.getElementById("anim-area")
-        canvas.width = 800
-        canvas.height = 600
-        const ctx = canvas.getContext("2d")
        
         //TODO: notebook
         const notebook = {
-            variables: 2,
+            variables: 3,
+            arrays: 2,
             loops: 4,
-            functions: 3,
-            arrays: 7
+            functions: 7
         }
 
-        const canvas = document.getElementById("drawingarea")
-        canvas.width = 800
-        canvas.height = 600
+
         
 
         //(BONUS) TODO: function for all prints
@@ -127,66 +117,57 @@
 
         updateStaticUI()
 
+        //WS2, Oppg 1:
         function toggleVisibility(elementid) {
-            const element = document.getElementById(elementid)
-            element.classList.contains("hidden")
-            if(element.style.display === "none") {
-                element.style.display = "block";
+            console.log(elementid)
+            const elem = document.getElementById(elementid)
+            if(elem.classList.contains("hidden")) {
+                elem.style.display = "block"
+                elem.classList.remove("hidden")
             } else {
-                element.style.display = "none";
+                elem.style.display = "none"
+                elem.classList.add("hidden")
             }
         }
+        //WS2, Oppg 2:
         document.addEventListener("keydown", function(event) {
-            if(event.code === "KeyI") {
-                toggleVisibility("info")
-            } else if(event.code === "KeyN") {
+            if(event.key === "n") {
                 toggleVisibility("notebook")
             }
+            if(event.key === "i") {
+                toggleVisibility("info")
+            }
         })
-        
+        //WS2, Oppg 3:
         document.getElementById("notebookToggler").addEventListener("click", function() {
             toggleVisibility("notebook")
         })
         document.getElementById("infoToggler").addEventListener("click", function() {
             toggleVisibility("info")
         })
-
-        function updateSingleStaticUI(element, value) {
-            console.log(element, value)
-            document.getElementById(element).innerHTML = value
+        //WS2, Oppg 4:
+        function updateSingleStaticUI(elementid, value) {
+            document.getElementById(elementid).innerHTML = value
         }
-        updateSingleStaticUI("points", 420)
-        updateSingleStaticUI("energy", 69)
+        //updateSingleStaticUI("duration", 31)
 
-        function updateConfigValue(obj, configType, value) {
-            obj === "gameConfig" ? gameConfig[configType] += value : notebook[configType] += value
+
+        //WS2, Oppg 5:
+        function updateConfigValue(configType, value) {
+            configType === "energy" ? gameConfig.energy += value : null
+            configType === "points" ? gameConfig.points += value : null
+            configType === "duration" ? gameConfig.duration += value : null
+            configType === "variables" ? notebook.variables += value : null
+            configType === "arrays" ? notebook.arrays += value : null
+            configType === "functions" ? notebook.functions += value : null
+            configType === "loops" ? notebook.loops += value : null
 
             updateStaticUI()
         }
+        updateConfigValue("energy", -3)
+        updateConfigValue("duration", 100)
+        updateConfigValue("loops", 1000)
 
-        updateConfigValue("gameConfig", "points", 10)
-        updateConfigValue("notebook", "arrays", 100)
-        updateConfigValue("notebook", "functions", -2)
-
-        //Canvas "Pause" text
-        ctx.beginPath()
-        ctx.fillStyle = "#ffffff";
-        ctx.fillRect(canvas.width - 150, canvas.height - 25, 150, 25)
-        ctx.fillStyle = "#3c429b"
-        ctx.font = "15px Arial"
-        ctx.fillText(gameConfig.gamePausedTxt, canvas.width - 132, canvas.height - 8)
-        ctx.closePath()
-
-        //Fortran figure (the hero)
-        const fortran = {
-            x: canvas.width / 2,
-            y: canvas.height / 2,
-            speed: 1
-        }
-        
-        function drawElements() {
-            ctx.drawImage(fortranImg, fortran.x, fortran.y)
-        }
     </script>
 </body>
 </html>
