@@ -31,7 +31,7 @@
         </nav>
     </header>
     <main>
-        
+        <canvas id="anim-area"></canvas>
         <section id="notebook" class="hidden">
             <div id="notebook-page">
                 
@@ -80,10 +80,17 @@
             playerName: "Bax",
             energy: 27,
             points: 420,
-            duration: 69
+            duration: 69,
+            gamePaused: false,
+            gamePausedTxt: "Press P to pause"
         }
 
         console.log(gameConfig)
+
+        const canvas = document.getElementById("anim-area")
+        canvas.width = 800
+        canvas.height = 600
+        const ctx = canvas.getContext("2d")
        
         //TODO: notebook
         const notebook = {
@@ -156,7 +163,26 @@
         updateConfigValue("gameConfig", "points", 10)
         updateConfigValue("notebook", "arrays", 100)
         updateConfigValue("notebook", "functions", -2)
+
+        //Canvas "Pause" text
+        ctx.beginPath()
+        ctx.fillStyle = "#ffffff";
+        ctx.fillRect(canvas.width - 150, canvas.height - 25, 150, 25)
+        ctx.fillStyle = "#3c429b"
+        ctx.font = "15px Arial"
+        ctx.fillText(gameConfig.gamePausedTxt, canvas.width - 132, canvas.height - 8)
+        ctx.closePath()
+
+        //Fortran figure (the hero)
+        const fortran = {
+            x: canvas.width / 2,
+            y: canvas.height / 2,
+            speed: 1
+        }
         
+        function drawElements() {
+            ctx.drawImage(fortranImg, fortran.x, fortran.y)
+        }
     </script>
 </body>
 </html>
