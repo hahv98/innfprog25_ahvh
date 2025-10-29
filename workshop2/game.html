@@ -183,10 +183,18 @@
             y: canvas.height / 2,
             speed: 1
         }
+
+        let fortranLoaded = false
+        let fortranImg = new Image()
+        fortranImg.src = "icons/fortran.png"
+        fortranImg.onload = () => {
+            fortranLoaded = true
+        }
         
         function drawElements() {
             ctx.drawImage(fortranImg, fortran.x, fortran.y)
         }
+        drawElements()
     </script>
 </body>
 </html>
