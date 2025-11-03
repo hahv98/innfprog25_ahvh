@@ -26,7 +26,7 @@
         </section>
         <img src="icons/c3_logo.svg" alt="Code Concept Collector" />
         <nav>
-            <button id="notebookToggler"><img src="icons/notebook.svg"/>Åpne kladdeboka <span class="shortcut">n</span></button>
+            <button id="notebookToggler"><img src="icons/notebook.svg" />Åpne kladdeboka <span class="shortcut">n</span></button>
             <button id="infoToggler">Info / Hvordan spille <span class="shortcut">i</span></button>
         </nav>
     </header>
@@ -75,22 +75,23 @@
     </main>
     <script>
         //PREPARE GAME CONFIG AND VARIABLES
-        //TODO: config
-        const gameConfig = {
-            playerName: "Bax",
-            energy: 27,
-            points: 4207,
-            duration: 69,
-            gamePaused: false,
-            pauseTxt: "Press P to pause"
-        }
-
-        console.log(gameConfig)
-
+        //Canvas-configuration:
         const canvas = document.getElementById("anim-area")
         canvas.width = 800
         canvas.height = 600
         const ctx = canvas.getContext("2d")
+
+        //TODO: config
+        const gameConfig = {
+            playerName: "Jostein",
+            energy: 10,
+            points: 4000,
+            duration: 30,
+            gamePaused: false,
+            gamePausedText: "Press P to pause"
+        }
+
+        console.log(gameConfig)
        
         //TODO: notebook
         const notebook = {
@@ -99,6 +100,17 @@
             functions: 3,
             arrays: 7
         }
+
+        //WS3, Oppg 5.1: Array med spillelementtyper:
+        const itemTypes = ["variable", "function", "loop", "array", "bug", "energydrink"]
+
+        //Konfigurerer Fortran:
+        const fortran = {
+            speed: 5,
+            x: canvas.width / 2,
+            y: canvas.height / 2
+        }
+
         
 
         //(BONUS) TODO: function for all prints
@@ -122,133 +134,126 @@
 
         updateStaticUI()
 
+        //WS2, Oppg 1:
         function toggleVisibility(elementid) {
-            const element = document.getElementById(elementid)
-            element.classList.contains("hidden")
-            if(element.style.display === "none") {
-                element.style.display = "block";
+            console.log(elementid)
+            const elem = document.getElementById(elementid)
+            if(elem.classList.contains("hidden")) {
+                elem.style.display = "block"
+                elem.classList.remove("hidden")
             } else {
-                element.style.display = "none";
+                elem.style.display = "none"
+                elem.classList.add("hidden")
             }
         }
+        //WS2, Oppg 2:
         document.addEventListener("keydown", function(event) {
-            if(event.code === "KeyI") {
-                toggleVisibility("info")
-            } else if(event.code === "KeyN") {
+            if(event.key === "n") {
                 toggleVisibility("notebook")
-            } else if(event.code === "KeyP"){
-                // gameConfig.gamePaused === true
-                // ? gameConfig.gamePaused = false
-                // : gameConfig.gamePaused === false
-                // ? gameConfig.gamePaused = true
-                // : null
-
-                gameConfig.gamePaused = !gameConfig.gamePaused
+            }
+            if(event.key === "i") {
+                toggleVisibility("info")
             }
         })
-
-        
+        //WS2, Oppg 3:
         document.getElementById("notebookToggler").addEventListener("click", function() {
             toggleVisibility("notebook")
         })
         document.getElementById("infoToggler").addEventListener("click", function() {
             toggleVisibility("info")
         })
-
-        function updateSingleStaticUI(element, value) {
-            console.log(element, value)
-            document.getElementById(element).innerHTML = value
+        //WS2, Oppg 4:
+        function updateSingleStaticUI(elementid, value) {
+            document.getElementById(elementid).innerHTML = value
         }
-        updateSingleStaticUI("points", 420)
-        updateSingleStaticUI("energy", 69)
+        //updateSingleStaticUI("duration", 31)
 
-        function updateConfigValue(obj, configType, value) {
-            obj === "gameConfig" ? gameConfig[configType] += value : notebook[configType] += value
+
+        //WS2, Oppg 5:
+        function updateConfigValue(configType, value) {
+            configType === "energy" ? gameConfig.energy += value : null
+            configType === "points" ? gameConfig.points += value : null
+            configType === "duration" ? gameConfig.duration += value : null
+            configType === "variables" ? notebook.variables += value : null
+            configType === "arrays" ? notebook.arrays += value : null
+            configType === "functions" ? notebook.functions += value : null
+            configType === "loops" ? notebook.loops += value : null
 
             updateStaticUI()
         }
+        updateConfigValue("energy", -3)
+        updateConfigValue("duration", 100)
+        updateConfigValue("loops", 1000)
 
-        updateConfigValue("gameConfig", "points", 10)
-        updateConfigValue("notebook", "arrays", 100)
-        updateConfigValue("notebook", "functions", -2)
+        
 
-
-        //Fortran figure (the hero)
-        const fortran = {
-            x: canvas.width / 2,
-            y: canvas.height / 2,
-            speed: 1
-        }
-
+        //WS3, Oppg 3: Fortran
         let fortranLoaded = false
-        let fortranImg = new Image()
-        fortranImg.src = "icons/fortran.png"
-        fortranImg.onload = () => {
-            fortranLoaded = true
-        }
+        let fortranImage = new Image()
+        fortranImage.src = "icons/fortran.png"
+        fortranImage.onload = () => { fortranLoaded = true; }
 
-        function drawItem(){
-            let itemImg = new Image()
-            itemImg.src = "icons/array.svg"
-            itemImg.onload = () => {
-                ctx.drawImage(itemImg, canvas.width / 2, canvas.height / 2)
+        //WS3, Oppg. 5.2: drawItem()
+        function drawItem(type, x, y) {
+            let itemImage = new Image()
+            itemImage.src = `icons/${type}.svg`
+            itemImage.onload = () => { ctx.drawImage(itemImage, x, y) }
+            //WS3, Oppg. 5.3: Utskrift av levetid:
+            if(type != "bug") {
+                ctx.beginPath()
+                ctx.arc(x, y, 10, 0, 2 * Math.PI)
+                ctx.fillStyle = "red"
+                ctx.fill()
+                ctx.fillStyle = "white"
+                ctx.font = "11px Verdana"
+                ctx.fillText("99", x - 7, y + 4)
+                ctx.closePath()
             }
         }
-        drawItem()
 
+        const requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame
 
-        requestAnimationFrame = 
-        window.mozRequestAnimationFrame ||
-        window.webkitRequestAnimationFrame ||
-        window.msRequestAnimationFrame ||
-        window.oRequestAnimationFrame ||
-        window.requestAnimationFrame
-        
-        
         function drawElements() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height)
-            if(fortranLoaded = true){
-            ctx.drawImage(fortranImg, fortran.x, fortran.y)
+            console.log("requestAnimationFrame kjører")
+
+            if(fortranLoaded === true) {
+                ctx.drawImage(fortranImage, fortran.x, fortran.y)
             }
-        
-        //Canvas "Pause" text
-        ctx.beginPath()
-        ctx.fillStyle = "#ffffff";
-        ctx.fillRect(canvas.width - 150, canvas.height - 25, 150, 25)
-        ctx.fillStyle = "#3c429b"
-        ctx.font = "15px Arial"
-        ctx.fillText(gameConfig.pauseTxt, canvas.width - 132, canvas.height - 8)
-        ctx.closePath()
 
-        //Pause text
-        if(gameConfig.gamePaused === true){
+            //WS3, Oppg 4.2: 
+            if(gameConfig.gamePaused === true) {
+                ctx.beginPath()
+                ctx.font = "100px Arial"
+                ctx.fillStyle = "red"
+                ctx.fillText("PAUSED", 250, 300)
+                ctx.closePath()
+
+                //Oppdatere pauseinfotekst:
+                gameConfig.gamePausedText = "Press P to unpause"
+            } else {
+                gameConfig.gamePausedText = "Press P to pause"
+            }
+
+            //WS3, oppg 5.2 test:
+            drawItem("function", 50, 100)
+            drawItem("bug", 400, 500)
+
+            //WS3, Oppg 2: Pausetext
             ctx.beginPath()
-            ctx.fillStyle = "red";
-            ctx.font = "3rem Arial"
-            ctx.fillText("PAUSED", canvas.width / 2 - 85, canvas.height / 2 + 30)
+            ctx.fillStyle = "#ffffff"
+            ctx.fillRect(650, 570, 200, 30)
+            ctx.fillStyle = "#3c429b"
+            ctx.font = "15px Arial"
+            ctx.fillText(gameConfig.gamePausedText, 660, 590)
             ctx.closePath()
-        
-            gameConfig.pauseTxt = "Press P to unpause"
-        } else {
-            gameConfig.pauseTxt = "Press P to pause"
+
+            requestAnimationFrame(drawElements)
         }
 
-        requestAnimationFrame(drawElements)
-        }
         drawElements()
 
 
-        //Hvilken brukerinteraksjon må vi ta hensyn til i koden?
-        // - Tastatur input
-        //Hvilke deler av koden vår kan vi bruke i brukerinteraksjonen?
-        // - addEventListener
-        //Hva skal endres i koden når vi kjenner (eller hører) brukerinteraksjonen?
-        // - Retnings boolean
-        // Når skal endringen starte?
-        // Når retnings-boolean er sann(?).
-        // - Ved tastetrykk? keydown
-        // Når skal endringen stoppe?
-        // - Opphevet ???
+
     </script>
 </body>
 </html>
