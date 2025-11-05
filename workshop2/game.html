@@ -80,7 +80,7 @@
             playerName: "Bax",
             energy: 27,
             points: 4207,
-            duration: 69,
+            duration: 0,
             gamePaused: false,
             pauseTxt: "Press P to pause"
         }
@@ -99,8 +99,30 @@
             functions: 3,
             arrays: 7
         }
-        
 
+        //Fortran figure (the hero)
+        const fortran = {
+            x: canvas.width / 2,
+            y: canvas.height / 2,
+            speed: 1
+        }
+        const fortranMovement = {
+            up: false,
+            down: false,
+            left: false,
+            right: false
+        }
+        
+        //WS3, Oppg 5.1: Array med spillelementtyper:
+        const itemTypes = ["variable", "function", "loop", "array", "bug", "energydrink"]
+        //Type, x, y, lifetime, collected
+        const items = [
+            {type: "variable", x: 500, y: 40, lifetime: 10, collected: false},
+            {type: "array", x: 45, y: 200, lifetime: 20, collected: false},
+            {type: "loop", x: 125, y: 325, lifetime: 1000, collected: false},
+            {type: "bug", x: 80, y: 146, lifetime: 0, collected: false},
+        ]
+        
         //(BONUS) TODO: function for all prints
         function updateStaticUI() {
             //TODO: print playerinfo to HTML
@@ -132,18 +154,42 @@
             }
         }
         document.addEventListener("keydown", function(event) {
+            //Togglers for info and notebook, and pause
             if(event.code === "KeyI") {
                 toggleVisibility("info")
             } else if(event.code === "KeyN") {
                 toggleVisibility("notebook")
             } else if(event.code === "KeyP"){
-                // gameConfig.gamePaused === true
-                // ? gameConfig.gamePaused = false
-                // : gameConfig.gamePaused === false
-                // ? gameConfig.gamePaused = true
-                // : null
-
                 gameConfig.gamePaused = !gameConfig.gamePaused
+            }
+
+            //Arrow keys and WASD
+            if(event.code === "ArrowUp" || event.code === "KeyW") {
+                fortranMovement.up = true
+            }
+            if(event.code === "ArrowDown" || event.code === "KeyS") {
+                fortranMovement.down = true
+            }
+            if(event.code === "ArrowLeft" || event.code === "KeyA") {
+                fortranMovement.left = true
+            }
+            if(event.code === "ArrowRight" || event.code === "KeyD") {
+                fortranMovement.right = true
+            }
+        })
+
+        document.addEventListener("keyup", (event) => {
+            if(event.code === "ArrowUp" || event.code === "KeyW") {
+                fortranMovement.up = false
+            }
+            if(event.code === "ArrowDown" || event.code === "KeyS") {
+                fortranMovement.down = false
+            }
+            if(event.code === "ArrowLeft" || event.code === "KeyA") {
+                fortranMovement.left = false
+            }
+            if(event.code === "ArrowRight" || event.code === "KeyD") {
+                fortranMovement.right = false
             }
         })
 
@@ -172,68 +218,87 @@
         updateConfigValue("notebook", "arrays", 100)
         updateConfigValue("notebook", "functions", -2)
 
-
-        //Fortran figure (the hero)
-        const fortran = {
-            x: canvas.width / 2,
-            y: canvas.height / 2,
-            speed: 1
-        }
-
         let fortranLoaded = false
         let fortranImg = new Image()
         fortranImg.src = "icons/fortran.png"
-        fortranImg.onload = () => {
-            fortranLoaded = true
-        }
+        fortranImg.onload = () => { fortranLoaded = true }
 
-        function drawItem(){
+        function drawItem(type, x, y, lifetime){
             let itemImg = new Image()
-            itemImg.src = "icons/array.svg"
-            itemImg.onload = () => {
-                ctx.drawImage(itemImg, canvas.width / 2, canvas.height / 2)
+            itemImg.src = `icons/${type}.svg`
+            ctx.drawImage(itemImg, x, y)
+
+            if(type != "bug") {
+                ctx.beginPath()
+                ctx.arc(x, y, 10, 0, 2 * Math.PI)
+                ctx.fillStyle = "red"
+                ctx.fill()
+                ctx.fillStyle = "white"
+                ctx.font = "11px Verdana"
+                ctx.fillText(lifetime, x - 7, y + 4)
+                ctx.closePath()
             }
         }
         drawItem()
 
+        //DURATION TIMER
+        setInterval(() => {
+            if(!gameConfig.gamePaused){
+                gameConfig.duration ++
+                console.log("Duration:", gameConfig.duration)
+                updateSingleStaticUI("duration", gameConfig.duration)
+                items.forEach((item) => {
+                item.lifetime--
+                })
+            }
+        }, 1000)
 
-        requestAnimationFrame = 
-        window.mozRequestAnimationFrame ||
-        window.webkitRequestAnimationFrame ||
-        window.msRequestAnimationFrame ||
-        window.oRequestAnimationFrame ||
-        window.requestAnimationFrame
+
+        requestAnimationFrame = window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame || window.oRequestAnimationFrame || window.requestAnimationFrame
         
         
         function drawElements() {
             ctx.clearRect(0, 0, canvas.width, canvas.height)
+            
+            //Fortran movement
+            fortranMovement.up ? fortran.y -= fortran.speed : null
+            fortranMovement.down ? fortran.y += fortran.speed : null
+            fortranMovement.left ? fortran.x -= fortran.speed : null
+            fortranMovement.right ? fortran.x += fortran.speed : null
+            //Draw Fortran
             if(fortranLoaded = true){
             ctx.drawImage(fortranImg, fortran.x, fortran.y)
             }
-        
-        //Canvas "Pause" text
-        ctx.beginPath()
-        ctx.fillStyle = "#ffffff";
-        ctx.fillRect(canvas.width - 150, canvas.height - 25, 150, 25)
-        ctx.fillStyle = "#3c429b"
-        ctx.font = "15px Arial"
-        ctx.fillText(gameConfig.pauseTxt, canvas.width - 132, canvas.height - 8)
-        ctx.closePath()
 
-        //Pause text
-        if(gameConfig.gamePaused === true){
+            //Canvas "Pause" text
             ctx.beginPath()
-            ctx.fillStyle = "red";
-            ctx.font = "3rem Arial"
-            ctx.fillText("PAUSED", canvas.width / 2 - 85, canvas.height / 2 + 30)
+            ctx.fillStyle = "#ffffff";
+            ctx.fillRect(canvas.width - 150, canvas.height - 25, 150, 25)
+            ctx.fillStyle = "#3c429b"
+            ctx.font = "15px Arial"
+            ctx.fillText(gameConfig.pauseTxt, canvas.width - 132, canvas.height - 8)
             ctx.closePath()
-        
-            gameConfig.pauseTxt = "Press P to unpause"
-        } else {
-            gameConfig.pauseTxt = "Press P to pause"
-        }
 
-        requestAnimationFrame(drawElements)
+            //Pause text
+            if(gameConfig.gamePaused === true){
+                ctx.beginPath()
+                ctx.fillStyle = "red";
+                ctx.font = "3rem Arial"
+                ctx.fillText("PAUSED", canvas.width / 2 - 85, canvas.height / 2 + 30)
+                ctx.closePath()
+            
+                gameConfig.pauseTxt = "Press P to unpause"
+            } else {
+                gameConfig.pauseTxt = "Press P to pause"
+            }
+
+            //Draw items
+            items.filter((item) => item.lifetime > 0 || item.type === "bug").map((item) => {
+                drawItem(item.type, item.x, item.y, item.lifetime)
+            })
+
+            
+            requestAnimationFrame(drawElements)
         }
         drawElements()
 

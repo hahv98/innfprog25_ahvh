@@ -148,11 +148,18 @@
         }
         //WS2, Oppg 2:
         document.addEventListener("keydown", function(event) {
-            if(event.key === "n") {
-                toggleVisibility("notebook")
-            }
-            if(event.key === "i") {
+            if(event.code === "KeyI") {
                 toggleVisibility("info")
+            } else if(event.code === "KeyN") {
+                toggleVisibility("notebook")
+            } else if(event.code === "KeyP"){
+                // gameConfig.gamePaused === true
+                // ? gameConfig.gamePaused = false
+                // : gameConfig.gamePaused === false
+                // ? gameConfig.gamePaused = true
+                // : null
+
+                gameConfig.gamePaused = !gameConfig.gamePaused
             }
         })
         //WS2, Oppg 3:
@@ -170,21 +177,22 @@
 
 
         //WS2, Oppg 5:
-        function updateConfigValue(configType, value) {
-            configType === "energy" ? gameConfig.energy += value : null
-            configType === "points" ? gameConfig.points += value : null
-            configType === "duration" ? gameConfig.duration += value : null
-            configType === "variables" ? notebook.variables += value : null
-            configType === "arrays" ? notebook.arrays += value : null
-            configType === "functions" ? notebook.functions += value : null
-            configType === "loops" ? notebook.loops += value : null
+      function updateSingleStaticUI(element, value) {
+            console.log(element, value)
+            document.getElementById(element).innerHTML = value
+        }
+        updateSingleStaticUI("points", 420)
+        updateSingleStaticUI("energy", 69)
+
+        function updateConfigValue(obj, configType, value) {
+            obj === "gameConfig" ? gameConfig[configType] += value : notebook[configType] += value
 
             updateStaticUI()
         }
-        updateConfigValue("energy", -3)
-        updateConfigValue("duration", 100)
-        updateConfigValue("loops", 1000)
 
+        updateConfigValue("gameConfig", "points", 10)
+        updateConfigValue("notebook", "arrays", 100)
+        updateConfigValue("notebook", "functions", -2)
         
 
         //WS3, Oppg 3: Fortran
@@ -215,6 +223,7 @@
 
         function drawElements() {
             console.log("requestAnimationFrame kjører")
+            
 
             if(fortranLoaded === true) {
                 ctx.drawImage(fortranImage, fortran.x, fortran.y)
