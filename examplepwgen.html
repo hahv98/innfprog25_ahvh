@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title> Password Generator </title>
+</head>
+<body>
+	<div>
+		<h1>Password Gneerator</h1>
+
+		<label for="length"> Length Of Password: </label>
+		<input type="number" id="length" value="8" min="1" step="1"/>
+
+		<br>
+		<input type="checkbox" id="includeUppercase" />
+		<label for="includeUppercase"> Include Uppercase </label>
+
+		<br>
+		<input type="checkbox" id="includeLowercase" />
+		<label for="includeLowercase"> Include Lowercase </label>
+
+		<br>
+		<input type="checkbox" id="includeNumbers" />
+		<label for="includeNumbers"> Include Numbers </label>
+
+		<br>
+		<input type="checkbox" id="includeSymbols" />
+		<label for="includeSymbols"> Include Symbols </label>
+
+		<br>
+		<button onclick="makePass()">Get Password</button>
+	</div>
+	<br>
+	<h1 id="output"></h1>
+		</div>
+
+    <script>
+
+        function makePass() {
+
+            let length = document.getElementById("length").value;
+            let includeLowercase = document.getElementById("includeLowercase").checked;
+            let includeUppercase = document.getElementById("includeUppercase").checked;
+            let includeNumbers = document.getElementById("includeNumbers").checked;
+            let includeSymbols = document.getElementById("includeSymbols").checked;
+
+            if (length < 1) {
+                document.getElementById("output").innerHTML = "Please enter a number greater than 1.";
+                return;
+            }
+
+            let charset = "";
+            if (includeLowercase) {
+                charset += "abcdefghijklmnopqrstuvwxyz";
+            }
+            if (includeUppercase) {
+                charset += "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            }
+            if (includeNumbers) {
+                charset += "0123456789";
+            }
+            if (includeSymbols) {
+                charset += "`~!@#$%^&*()_+-={}|[]\\:\";'<>?,./";
+            }
+            let output = "";
+            for (let i = 0; i < length; i++) {
+                let char = charset.charAt(Math.floor(Math.random() * charset.length));
+                output += char;
+            }
+            document.getElementById("output").innerHTML = charset.length === 0 ? "SELECT SOMETHING": output;
+        }
+
+    </script>
+</body>
+
+</html>
+

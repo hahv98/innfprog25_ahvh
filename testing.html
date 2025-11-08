@@ -8,9 +8,9 @@
 <body>
     <h1>Passordgenerator</h1>
     <!-- Felter for brukervalg her -->
-    <label for="pwlength">
+    <label for="password-length">
         Password length:
-        <input id="pwlength" type="number" step="1">
+        <input id="pwlength" type="number">
     </label>
     <label for="letters">
         Uppercase:
@@ -27,7 +27,7 @@
         <input type="checkbox" id="syms">
     </label>
    
-    <button id="pwbtn" type="submit" onclick=(password)>Generate</button>
+    <button id="pwbtn" type="submit" onclick="password">Generate</button>
     
     <p>Ditt passord: <span id="generatedPassword"></span></p>
 
@@ -37,17 +37,23 @@
         const numbers = "0123456789";
         const symbols = "!@#$%^&*()_+-=[]{}|;:',.<>?/`~";
 
+        
+        const includeLowercase = true
+        const includeUppercase = true 
+        const includeNumbers = true 
+        const includeSymbols = true
+
         function passwordgenerator(length, includeLowercase, includeUppercase, includeNumbers, includeSymbols) {
             /* Din kode her */
-            const pwlength = document.getElementById("pwlength").value
-            //console.log(pwlength)
+            const pwlength = Number(document.getElementById("pwlength").value)
+            console.log(pwlength)
             let charset = ""
             let pword = ""
 
-            charset += document.getElementById("capital").checked ? uppercase : ""
-            charset += document.getElementById("normal").checked ? lowercase : "";
-            charset += document.getElementById("num").checked ? numbers : "";
-            charset += document.getElementById("syms").checked ? symbols : "";
+            charset += includeUppercase ? uppercase : ""
+            charset += includeLowercase ? lowercase : "";
+            charset += includeNumbers ? numbers : "";
+            charset += includeSymbols ? symbols : "";
             //console.log(charset)
 
             for(let i = 0; i < length; i++){
@@ -55,10 +61,17 @@
                 pword += charset[randomIndex]; 
             }
 
-            return ``;
+            return pword;
         }
-        const password = passwordgenerator(pwlength, includeLowercase, includeUppercase, includeNumbers, includeSymbols)
+        const password = passwordgenerator()
         console.log(`Generated Password: ${password}`)
+
+        // document.getElementById("capital").checked
+        // document.getElementById("normal").checked
+        // document.getElementById("num").checked
+        // document.getElementById("syms").checked
+
+        //pwlength, includeUppercase, includeLowercase, includeNumbers, includeSymbols
      </script>
 </body>
 </html>
