@@ -61,3 +61,87 @@
      </script>
 </body>
 </html>
+
+<!-- <body>
+    <h1>Passordgenerator</h1>
+    <!-- Felter for brukervalg her -->
+    <!-- <section>
+        Password length -->
+        <!-- <label for="pw-length">
+            Password length: </label>
+        <input type="number" id="pw-length" value="8" step="1"> -->
+        
+
+        <!-- Only capital- or small letters (or both) -->
+        <!-- <label for="letters">
+            Capital letters:
+            <input type="checkbox" id="cptl-box">
+            Small letters:
+            <input type="checkbox" id="small-box">
+        </label> -->
+
+        <!-- Numbers or not -->
+        <!-- <label for="numerical">
+            Numbers:
+            <input type="checkbox" id="num-box">
+        </label> -->
+
+        <!-- Special symbols or not -->
+        <!-- <label for="symbol">
+            Special symbols:
+            <input type="checkbox" id="sym-box">
+     </label>
+
+       <button id="generatebtn" onclick="passwordgenerator()">Generate password</button>
+     </section>
+
+
+     <p>Ditt passord: <span id="generatedPassword"></span></p>
+
+     <script>
+        const lowercase = "abcdefghijklmnopqrstuvwxyz";
+        const uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        const numbers = "0123456789";
+        const symbols = "!@#$%^&*()_+-=[]{}|;:',.<>?/`~";
+        const pwlength = document.getElementById("pw-length").value;
+        const includeLowercase = document.getElementById("small-box").checked;
+        const includeUppercase = document.getElementById("cptl-box").checked;
+        const includeNumbers = document.getElementById("num-box").checked;
+        const includeSymbols = document.getElementById("sym-box").checked;
+               
+        function passwordgenerator(length, includeLowercase, includeUppercase, includeNumbers, includeSymbols) {
+            /* Din kode her */
+            let charset = "";
+            let password = "";
+
+            if (pwlength < 1) {
+					document.getElementById("generatedPassword").innerHTML = "Please enter a number greater than 1.";
+					return;
+				} -->
+
+            <!-- // charset += includeLowercase ? lowercase : "";
+            // charset += includeUppercase ? uppercase : "";
+            // charset += includeNumbers ? numbers : "";
+            // charset += includeSymbols ? symbols : "";
+
+            if(includeLowercase){
+                charset += lowercase;
+            }
+            if(includeUppercase){
+                charset += uppercase;
+            }
+            if(includeNumbers){
+                charset += numbers;
+            }
+            if(includeSymbols){
+                charset += symbols;
+            }
+            return password;
+        }
+
+        const password = passwordgenerator(pwlength, includeLowercase, includeUppercase, includeNumbers, includeSymbols);
+
+        console.log(`Generated password: ${password}`);
+        
+     </script>
+</body> -->
