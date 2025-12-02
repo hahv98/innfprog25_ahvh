@@ -1,0 +1,56 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #e9f2f9;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background: #2f86c7;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+.filter-section {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.filter-btn,
+.filter-stilling {
+    padding: 10px 18px;
+    margin: 5px;
+    border: 1px solid #2f86c7;
+    background: white;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.filter-btn:hover,
+.filter-stilling:hover {
+    background: #cae3f7;
+}
+
+.ansatt-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 15px;
+    padding: 20px;
+}
+
+.kort {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid #d5d5d5;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.kort h3 {
+    margin-top: 0;
+}
+
+.bold {
+    font-weight: bold;
+}

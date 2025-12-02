@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <title>Høgskolen JS</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Høgskolen JS</h1>
+    </header>
+
+    <div class="filter-section">
+        <button class="filter-btn" data-filter="alle">Vis alle ansatte</button>
+        <button class="filter-btn" data-filter="undervisere">Vis undervisere</button>
+        <button class="filter-btn" data-filter="administrasjon">Vis administrasjon</button>
+
+        <div class="subfilters">
+            Vis kun stilling:
+            <button class="filter-stilling" data-stilling="Professor">Professor</button>
+            <button class="filter-stilling" data-stilling="Dekan">Dekan</button>
+            <button class="filter-stilling" data-stilling="Rektor">Rektor</button>
+            <button class="filter-stilling" data-stilling="Vaktmester">Vaktmester</button>
+            <button class="filter-stilling" data-stilling="Lektor">Lektor</button>
+        </div>
+    </div>
+
+    <h2>Ansatte</h2>
+    <div id="ansatt-container" class="ansatt-container"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>

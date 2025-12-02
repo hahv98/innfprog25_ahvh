@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8">
+  <title>Personregister – Søk</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; background: #f5f5f5; }
+    h1 { margin-bottom: 10px; }
+    .search-box { margin-bottom: 20px; display: flex; gap: 10px; }
+    input, select { padding: 10px; font-size: 16px; }
+    table { width: 100%; border-collapse: collapse; background: white; }
+    th, td { padding: 10px; border-bottom: 1px solid #ddd; }
+    th { background: #e7e7e7; }
+  </style>
+</head>
+<body>
+  <h1>Personregister – Søk og filtrering</h1>
+
+  <div class="search-box">
+    <input id="searchInput" type="text" placeholder="Søk i navn, fagområde, avdeling ...">
+    <select id="roleFilter">
+      <option value="">Alle roller</option>
+      <option>Rektor</option>
+      <option>Dekan</option>
+      <option>Vaktmester</option>
+      <option>Professor</option>
+      <option>Lektor</option>
+    </select>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Fornavn</th>
+        <th>Etternavn</th>
+        <th>Rolle</th>
+        <th>Detalje</th>
+        <th>E-post</th>
+      </tr>
+    </thead>
+    <tbody id="resultBody"></tbody>
+  </table>
+
+  <script>
+    const staff = [
+      { id:"R-001", fornavn:"Ingrid", etternavn:"Solheim", rolle:"Rektor", avdeling:"Ledelsen", epost:"ingrid.solheim@prog.no" },
+      { id:"D-101", fornavn:"Morten", etternavn:"Aas", rolle:"Dekan", fakultet:"Humaniora", epost:"morten.aas@prog.no" },
+      { id:"D-102", fornavn:"Selma", etternavn:"Nergård", rolle:"Dekan", fakultet:"Naturvitenskap", epost:"selma.nergard@prog.no" },
+      { id:"V-201", fornavn:"Tom", etternavn:"Eriksen", rolle:"Vaktmester", ansvarsområde:"Bygg A–C", epost:"tom.eriksen@prog.no" },
+      { id:"V-202", fornavn:"Nabila", etternavn:"Kahn", rolle:"Vaktmester", ansvarsområde:"Verksteder og uteområder", epost:"nabila.kahn@prog.no" },
+      { id:"V-203", fornavn:"Jonas", etternavn:"Røed", rolle:"Vaktmester", ansvarsområde:"Teknisk drift og lager", epost:"jonas.roed@prog.no" },
+      { id:"P-301", fornavn:"Eirik", etternavn:"Wendelstad", rolle:"Professor", fagområde:"Informatikk", epost:"eirik.wendelstad@prog.no" },
+      { id:"P-302", fornavn:"Maria", etternavn:"Fosse", rolle:"Professor", fagområde:"Pedagogikk", epost:"maria.fosse@prog.no" },
+      { id:"P-303", fornavn:"Linh", etternavn:"Tran", rolle:"Professor", fagområde:"Fysikk", epost:"linh.tran@prog.no" },
+      { id:"P-304", fornavn:"Gunnar", etternavn:"Kleppe", rolle:"Professor", fagområde:"Historie", epost:"gunnar.kleppe@prog.no" },
+      { id:"P-305", fornavn:"Sofia", etternavn:"Bergmann", rolle:"Professor", fagområde:"Biologi", epost:"sofia.bergmann@prog.no" },
+      { id:"L-401", fornavn:"Astrid", etternavn:"Nymo", rolle:"Lektor", fagområde:"Engelsk", epost:"astrid.nymo@prog.no" },
+      { id:"L-402", fornavn:"Henrik", etternavn:"Liland", rolle:"Lektor", fagområde:"Matematikk", epost:"henrik.liland@prog.no" },
+      { id:"L-403", fornavn:"Julie", etternavn:"Strand", rolle:"Lektor", fagområde:"Samfunnsfag", epost:"julie.strand@prog.no" },
+      { id:"L-404", fornavn:"Samuel", etternavn:"Borge", rolle:"Lektor", fagområde:"Programmering", epost:"samuel.borge@prog.no" },
+      { id:"L-405", fornavn:"Kari", etternavn:"Heggernes", rolle:"Lektor", fagområde:"Kunst og håndverk", epost:"kari.heggernes@prog.no" },
+      { id:"L-406", fornavn:"Daniel", etternavn:"Røine", rolle:"Lektor", fagområde:"Norsk", epost:"daniel.roine@prog.no" },
+      { id:"L-407", fornavn:"Nina", etternavn:"Arctander", rolle:"Lektor", fagområde:"Spansk", epost:"nina.arctander@prog.no" },
+      { id:"L-408", fornavn:"Oskar", etternavn:"Jebe", rolle:"Lektor", fagområde:"Fysikk", epost:"oskar.jebe@prog.no" },
+      { id:"L-409", fornavn:"Thea", etternavn:"Vik", rolle:"Lektor", fagområde:"Geografi", epost:"thea.vik@prog.no" },
+      { id:"L-410", fornavn:"Emil", etternavn:"Halvorsen", rolle:"Lektor", fagområde:"Kjemi", epost:"emil.halvorsen@prog.no" }
+    ];
+
+    const resultBody = document.getElementById("resultBody");
+    const searchInput = document.getElementById("searchInput");
+    const roleFilter = document.getElementById("roleFilter");
+
+    function render(list) {
+      resultBody.innerHTML = list.map(p => {
+        const detail = p.fagområde || p.ansvarsområde || p.fakultet || p.avdeling || "";
+        return `
+          <tr>
+            <td>${p.id}</td>
+            <td>${p.fornavn}</td>
+            <td>${p.etternavn}</td>
+            <td>${p.rolle}</td>
+            <td>${detail}</td>
+            <td>${p.epost}</td>
+          </tr>`;
+      }).join("");
+    }
+
+    function filterList() {
+      const text = searchInput.value.toLowerCase();
+      const role = roleFilter.value;
+
+      const filtered = staff.filter(p => {
+        const matchesText = Object.values(p)
+          .join(" ")
+          .toLowerCase()
+          .includes(text);
+
+        const matchesRole = !role || p.rolle === role;
+        return matchesText && matchesRole;
+      });
+
+      render(filtered);
+    }
+
+    searchInput.addEventListener("input", filterList);
+    roleFilter.addEventListener("change", filterList);
+
+    // initial visning
+    render(staff);
+  </script>
+</body>
+</html>
