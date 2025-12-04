@@ -15,130 +15,135 @@ export const allKurs = [
 // Objektorientert programmering = allKurs[15]    | Datakommunikasjon = allKurs[16]
 // Datasikkerhet = allKurs[17]                    | Prosjektledelse = allKurs[18]
 
+export const role = 
+[ "Rektor", "Dekan", "Vaktmester", "Professor", "Lektor" ]
+// Rektor = stilling[0] | Dekan = stilling[1] | Vaktmester = stilling[2] | Professor = stilling[3] | Lektor = stilling[4]
+
+
 export const staff = [
         {
-            stilling: "Rektor", kontor: "R-001", avdeling: "", 
+            stilling: `${role[0]}`, kontor: "R-001", avdeling: "", 
             etternavn: "Solheim", 
             fornavn: "Ingrid",   
             epost: "ingrid.solheim@prog.no", 
         },
         { 
-            stilling: "Dekan", kontor: "D-101", avdeling: "",
+            stilling: `${role[1]}`, kontor: "D-101", avdeling: "",
             etternavn: "Aas", 
             fornavn: "Morten", 
             epost: "morten.aas@prog.no", 
         },
         { 
-            stilling: "Dekan", kontor: "D-102", avdeling: "",
+            stilling: `${role[1]}`, kontor: "D-102", avdeling: "",
             etternavn: "Nergård", 
             fornavn: "Selma", 
             epost: "selma.nergard@prog.no",  
         },
         { 
-            stilling: "Vaktmester", kontor: "V-201", avdeling: "",
+            stilling: `${role[2]}`, kontor: "V-201", avdeling: "",
             etternavn: "Eriksen", 
             fornavn: "Tom", 
             epost: "tom.eriksen@prog.no", 
         },
         { 
-            stilling: "Vaktmester", kontor: "V-202", avdeling: "",
+            stilling: `${role[2]}`, kontor: "V-202", avdeling: "",
             etternavn: "Kahn",
             fornavn: "Nabila", 
             epost: "nabila.kahn@prog.no",
         },
         {
-            stilling: "Vaktmester", kontor: "V-203", avdeling: "",
+            stilling: `${role[2]}`, kontor: "V-203", avdeling: "",
             etternavn: "Røed", 
             fornavn: "Jonas", 
             epost: "jonas.roed@prog.no",
         },
         { 
-            stilling: "Professor", kontor: "P-301", avdeling: `${allKurs[1]}, ${allKurs[7]}`,
+            stilling: `${role[3]}`, kontor: "P-301", avdeling: `${allKurs[1]}, ${allKurs[7]}`,
             etternavn: "Wendelstad", 
             fornavn: "Eirik", 
             epost: "eirik.wendelstad@prog.no", 
         },
         { 
             
-            stilling: "Professor", kontor: "P-302", avdeling: `${allKurs[3]}`,
+            stilling: `${role[3]}`, kontor: "P-302", avdeling: `${allKurs[3]}`,
             etternavn: "Fosse", 
             fornavn: "Maria",
             epost: "maria.fosse@prog.no",
         },
         { 
-            stilling: "Professor", kontor: "P-303", avdeling: `${allKurs[4]}, ${allKurs[17]}`,
+            stilling: `${role[3]}`, kontor: "P-303", avdeling: `${allKurs[4]}, ${allKurs[17]}`,
             etternavn: "Tran",
             fornavn: "Linh",
             epost: "linh.tran@prog.no",
         },
         { 
-            stilling: "Professor", kontor: "P-304", avdeling: `${allKurs[5]}`,
+            stilling: `${role[3]}`, kontor: "P-304", avdeling: `${allKurs[5]}`,
             etternavn: "Kleppe",
             fornavn: "Gunnar", 
             epost: "gunnar.kleppe@prog.no" 
         }, 
         { 
-            stilling: "Professor", kontor: "P-305", avdeling: `${allKurs[6]}`,
+            stilling: `${role[3]}`, kontor: "P-305", avdeling: `${allKurs[6]}`,
             etternavn: "Bergmann", 
             fornavn: "Sofia",
             epost: "sofia.bergmann@prog.no"
         },
         {
-            stilling: "Lektor", kontor: "L-401", kontor: "L-401", avdeling: `${allKurs[7]}, ${allKurs[12]}`,
+            stilling: `${role[4]}`, kontor: "L-401", kontor: "L-401", avdeling: `${allKurs[7]}, ${allKurs[12]}`,
             etternavn: "Nymo", 
             fornavn: "Astrid",
             epost: "astrid.nymo@prog.no"
         },
         { 
-            stilling: "Lektor", kontor: "L-402", avdeling: `${allKurs[8]}`,
+            stilling: `${role[4]}`, kontor: "L-402", avdeling: `${allKurs[8]}`,
             etternavn: "Liland", 
             fornavn: "Henrik",
             epost: "henrik.liland@prog.no"
         },
         { 
-            stilling: "Lektor", kontor: "L-403", avdeling: `${allKurs[9]}, ${allKurs[13]}`,
+            stilling: `${role[4]}`, kontor: "L-403", avdeling: `${allKurs[9]}, ${allKurs[13]}`,
             etternavn: "Strand",
             fornavn: "Julie",
             epost: "julie.strand@prog.no" 
         },
         { 
-            stilling: "Lektor", kontor: "L-404", avdeling: `${allKurs[10]}`,
+            stilling: `${role[4]}`, kontor: "L-404", avdeling: `${allKurs[10]}`,
             etternavn: "Borge",
             fornavn: "Samuel",
             epost: "samuel.borge@prog.no" 
         },
         { 
-            stilling: "Lektor", kontor: "L-405", avdeling: `${allKurs[11]}`,
+            stilling: `${role[4]}`, kontor: "L-405", avdeling: `${allKurs[11]}`,
             etternavn: "Heggernes",
             fornavn: "Kari",
             epost: "kari.heggernes@prog.no"
         },
         { 
-            stilling: "Lektor", kontor: "L-406", avdeling: `${allKurs[12]}`,
+            stilling: `${role[4]}`, kontor: "L-406", avdeling: `${allKurs[12]}`,
             etternavn: "Røine",
             fornavn: "Daniel",
             epost: "daniel.roine@prog.no" 
         },  
         { 
-            stilling: "Lektor", kontor: "L-407", avdeling: `${allKurs[14]}, ${allKurs[18]}`,
+            stilling: `${role[4]}`, kontor: "L-407", avdeling: `${allKurs[14]}, ${allKurs[18]}`,
             etternavn: "Arctander",
             fornavn: "Nina",
             epost: "nina.arctander@prog.no"
         },
         { 
-            stilling: "Lektor", kontor: "L-408", avdeling: `${allKurs[13]}`,
+            stilling: `${role[4]}`, kontor: "L-408", avdeling: `${allKurs[13]}`,
             etternavn: "Jebe",
             fornavn: "Oskar",
             epost: "oskar.jebe@prog.no" 
         },
         { 
-            stilling: "Lektor", kontor: "L-409", avdeling: `${allKurs[15]}, ${allKurs[1]}`,
+            stilling: `${role[4]}`, kontor: "L-409", avdeling: `${allKurs[15]}, ${allKurs[1]}`,
             etternavn: "Vik", 
             fornavn: "Thea",
             epost: "thea.vik@prog.no"
         },
         { 
-            stilling: "Lektor", kontor: "L-410", avdeling: `${allKurs[16]}`,
+            stilling: `${role[4]}`, kontor: "L-410", avdeling: `${allKurs[16]}`,
             etternavn: "Halvorsen", 
             fornavn: "Emil",
             epost: "emil.halvorsen@prog.no"
@@ -146,7 +151,7 @@ export const staff = [
     ]
 
 
-export const admin = ["Rektor", "Dekan", "Vaktmester"];
-export const teach = ["Professor", "Lektor"];
+export const admin = [`${stilling[0]}`, `${stilling[1]}`, `${stilling[2]}`];
+export const teach = [`${stilling[3]}`, `${stilling[4]}`];
 
 

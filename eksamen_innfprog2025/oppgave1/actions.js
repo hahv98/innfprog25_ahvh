@@ -1,4 +1,4 @@
-import {staff, admin, teach, allKurs} from "./register.js";
+import {staff, admin, teach, allKurs, role} from "./register.js";
 
 document.getElementById("kursliste").innerHTML = allKurs.map(kurs => `<li>${kurs}</li>`).join("");
 
