@@ -20,17 +20,17 @@
         
             <nav class="subfilters">
                 Vis kun stilling:
-                <button class="filter-stilling" data-stilling="Rektor">Rektor</button>
-                <button class="filter-stilling" data-stilling="Dekan">Dekan</button>
-                <button class="filter-stilling" data-stilling="Vaktmester">Vaktmester</button>
-                <button class="filter-stilling" data-stilling="Professor">Professor</button>
-                <button class="filter-stilling" data-stilling="Lektor">Lektor</button>
+                <button class="filter-role" data-filter="Rektor">Rektor</button>
+                <button class="filter-role" data-filter="Dekan">Dekan</button>
+                <button class="filter-role" data-filter="Vaktmester">Vaktmester</button>
+                <button class="filter-role" data-filter="Professor">Professor</button>
+                <button class="filter-role" data-filter="Lektor">Lektor</button>
             </nav>
         </section>
 
         <section>
             <h2>Ansatte</h2>
-            <div id="output" class="ansatt-container"></div>
+            <div id="staff-list" class="staff-container"></div>
         </section>
         <section class="kursliste">
             <h2>Kursoversikt</h2>
@@ -40,6 +40,7 @@
 
     
 
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
     <script type="module" src="../oppgave1/actions.js"></script>
 </body>
 </html>

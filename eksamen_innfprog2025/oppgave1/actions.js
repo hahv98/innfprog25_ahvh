@@ -1,46 +1,65 @@
-import {staff, admin, teach, allKurs, role} from "./register.js";
+import {staff, admin, teach, role} from "./register.js";
 
-document.getElementById("kursliste").innerHTML = allKurs.map(kurs => `<li>${kurs}</li>`).join("");
 
-const container = document.getElementById("output")
-function visAnsatte(list) {
-    container.innerHTML = "";
+const container = document.getElementById("staff-list")
+let filtered = staff
 
-    list.forEach(a => {
-        const kort = document.createElement("div");
-        kort.className = "kort";
-        
-        kort.innerHTML = `
-            <h3>${a.fornavn} ${a.etternavn}</h3>
-            <p><b>Stilling:</b> ${a.stilling}</p>
-            <p><b>Kontor:</b> ${a.kontor}</p>
-            <p><b>E-post:</b> <a href="mailto:${a.epost}">${a.epost}</a></p>
-            ${a.avdeling ? `<p><b>Kursansvar:</b> ${a.avdeling}</p>` : "<em>Ingen kursansvar</em>"}
-        `;
+function showStaff(staff) {
+    container.innerHTML = ""
 
-        container.appendChild(kort);
-    });
+    staff.map(e => {
+        const card = document.createElement("article")
+        card.className = "card"
+
+        card.innerHTML = `
+            <h3>${e.fornavn} ${e.etternavn}</h3>
+            <p><b>Stilling:</b> ${e.stilling}</p>
+            <p><b>Kontor:</b> ${e.kontor}</p>
+            <p><b>E-post:</b> <a href="mailto:${e.epost}">${e.epost}</a></p>
+            ${e.kursansvar ? `<p><b>Kursanvsar:</b> ${e.kursansvar}</p>` : "<em>Ingen kursansvar</em>"}`
+
+        container.appendChild(card)
+    })
 }
 
-function filter(type) {
-    if (type === "alle") {
-        visAnsatte(staff);
-        return;
+function filterStaff(type){
+    if(type === "alle"){
+        return showStaff(staff)
     }
-    else if (type === "administrasjon") {
-        const resultat = staff.filter(a => admin.includes(a.stilling));
-        visAnsatte(resultat);
-        return;
+    else if(type === admin){
+        filtered = staff.filter(e => admin.includes(e.stilling))
     }
-    else if (type === "undervisere") {
-        const resultat = staff.filter(a => teach.includes(a.stilling));
-        visAnsatte(resultat);
-        return;
+    else if(type === teach){
+        filtered = staff.filter(e => teach.includes(e.stilling))
     }
+    else if(role.includes(type)){
+        filtered = staff.filter(e => e.stilling === type)
+    }
+
+    showStaff(filtered)
 }
-document.querySelectorAll(".filter-btn").forEach(btn => {
-    btn.addEventListener("click", () => {
-        filter(btn.dataset.filter);
-    });
-});
-visAnsatte(staff);
+
+
+
+$("[data-filter = 'alle']").click(() => showStaff(staff))
+$("[data-filter = 'administrasjon']").click(() => filterStaff(admin))
+$("[data-filter = 'undervisere']").click(() => filterStaff(teach))
+$("[data-filter]").click(function(){
+    filterStaff($(this).data("filter"))
+})
+
+
+showStaff(staff)
+
+//Design før samling til en funksjon
+// $("[data-filter='alle']").click(function(){
+//     showStaff(staff)
+// })
+// $("[data-filter='administrasjon']").click(function(){
+//     const filtered = staff.filter(e => admin.includes(e.stilling))
+//     showStaff(filtered)
+// })
+// $("[data-filter='undervisere']").click(function(){
+//     const filtered = staff.filter(e => teach.includes(e.stilling))
+//     showStaff(filtered)
+// })
