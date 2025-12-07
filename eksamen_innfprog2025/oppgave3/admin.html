@@ -11,34 +11,30 @@
         <h1>Fiktiv Høgskole - Ansatt register</h1>
     </header>
     <main>
-        <section>
+        <form class="addUser">
             <h2>Legg til ansatt</h2>
-            <label for="firstname">
-                <p>Fornavn</p>
-                <input type="text" name="fornavn" id="name1">
-            </label>
-            <label for="lastname">
-                <p>Etternavn</p>
-                <input type="text" name="etternavn" id="name0">
-            </label>
-            <label for="email">
-                <p>E-post</p>
-                <input type="email" name="email" id="epost">
-            </label>
-            <label for="office">
-                <p>Kontor</p>
-                <input type="text" name="kontor" id="kontor">
-            </label>
-            <label for="stilling" name="rolle" id="role">
-                <p>Stilling</p>
-                
-            </label>
-            <label for="kurs">
-                <p>Kursansvar</p>
-                <input type="text">
-            </label>
+            <label for="fornavn">Fornavn:</label>
+            <input type="text" name="fornavn" id="fornavn" required>
+            
+            <label for="etternavn">Etternavn:</label>
+            <input type="text" name="etternavn" id="etternavn" required>
+            
+            <label for="epost">E-post:</label>
+            <input type="email" name="email" id="epost" required>
+            
+            <label for="kontor">Kontor:</label>
+                <input type="text" name="kontor" id="kontor" required>
+            
+            <label for="rolelist">Stilling:</label>
+            <select id="rolelist">
+                <option value="">Velg stilling</option>
+            </select>
+
+            <label for="kurs">Kursansvar:</label>
+            <input type="text" placeholder="Komma(,) for separering" id="kurs">
+            
             <button class="admin-btn" id="addemp">Legg til ansatt</button>
-        </section>
+        </form>
         <section>
             <h2>Ansatte</h2>
             <div id="staff-list" class="staff-container"></div>

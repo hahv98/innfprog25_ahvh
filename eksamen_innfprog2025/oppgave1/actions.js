@@ -4,6 +4,8 @@ import {staff, admin, teach, role} from "./register.js";
 const container = document.getElementById("staff-list")
 let filtered = staff
 
+
+
 function showStaff(staff) {
     container.innerHTML = ""
 
@@ -51,39 +53,108 @@ $("[data-filter]").click(function(){
     filterStaff($(this).data("filter"))
 })
 
+//#OPPG3 - Legge til og fjerne en ansatt via HTML
+
+function roleMenu(){
+    //Meny for hvilken stilling
+    const select = document.getElementById("rolelist")
+
+    for(let i = 0; i < role.length; i++){
+        let opt = role[i]
+        let el = document.createElement("option")
+        el.textContent = opt;
+        el.value = opt
+        select.appendChild(el)
+    }
+
+    //Legge til ny ansatt
+    document.getElementById("addemp").onclick = function() {
+        const newStaff = {
+            stilling: document.getElementById("rolelist").value,
+            fornavn: document.getElementById("fornavn").value,
+            etternavn: document.getElementById("etternavn").value,
+            kontor: document.getElementById("kontor").value,
+            epost: document.getElementById("epost").value,
+            kursansvar: document.getElementById("kurs").value,
+    }
+
+    staff.push(newStaff)
+    showStaff(staff)
+
+    //Tøm etter registrering
+    document.getElementById("fornavn").value = ""
+    document.getElementById("etternavn").value = ""
+    document.getElementById("kontor").value = ""
+    document.getElementById("epost").value = ""
+    document.getElementById("kurs").value = ""
+    }
+}
+roleMenu()
+//roleMenu funksjonen laget ved hjelp av ChatGPT(08.desember versjon) for opprydding og tydeliggjøring av koden.
+
+
+// function roleMenu(){
+//     const select = document.getElementById("rolelist")
+
+//     for(let i = 0; i < role.length; i++){
+//         let opt = role[i]
+//         let el = document.createElement("option")
+//         el.textContent = opt;
+//         el.value = opt
+//         select.appendChild(el)
+//     }
+
+//     document.getElementById("addemp").onclick = staff.push(p => {
+//          p.fornavn = document.getElementById("fornavn").value
+//         p.etternavn = document.getElementById("etternavn").value
+//         p.kontor = document.getElementById("kontor").value
+//         p.epost = document.getElementById("epost").value
+//         p.kursansvar = document.getElementById("kurs").value
+//     })
+   
+// }
+// roleMenu()
+
 
 showStaff(staff)
+//funksjonen roleMenu ble laget ved hjelp av et foruminnlegg fra StackOverflow, for å gjøre enklere valget 
+//av roller ved å bruke det allerede eksisterende arrayet som inneholder disse stillingene. Link finnes i referanselisten i mappedokumentet
+
+
 
 
 //Gjort samtidig med #OPPG3
 
-function showAllKurs(staff, elementId){
-    const allKurs = staff
+// function showAllKurs(staff, elementId){
+//     const allKurs = staff
     
-    .flatMap(k => Array.isArray(k.kursansvar) ? k.kursansvar : [])
-    .filter((kurs, index, arr) => arr.indexOf(kurs) === index)
-    .sort()
+//     .flatMap(k => Array.isArray(k.kursansvar) ? k.kursansvar : [])
+//     .filter((kurs, index, arr) => arr.indexOf(kurs) === index)
+//     .sort()
 
-    document.getElementById(elementId).innerHTML = allKurs.map(kurs => `<li>${kurs}</li>`).join("")
-}
+//     document.getElementById(elementId).innerHTML = allKurs.map(kurs => `<li>${kurs}</li>`).join("")
+// }
+// showAllKurs(staff, "kursliste")
 
-showAllKurs(staff, "kursliste")
 
+// const forminput = document.getElementsByClassName("addUser")
+// //let filtered = staff
 
-//#OPPG3 - Legge til og fjerne en ansatt via HTML
+// function addUser() {
+//     forminput.innerHTML = ""
 
-const addbtn = document.getElementById("addemp")
+//     role.map(e => {
+//         const card = document.createElement("article")
+//         card.className = "card"
 
-addbtn.addEventListener("click", registerUser)
+//         card.innerHTML = `
+//             <h3>${e.fornavn} ${e.etternavn}</h3>
+//             <p><b>Stilling:</b> ${e.stilling}</p>
+//             <p><b>Kontor:</b> ${e.kontor}</p>
+//             <p><b>E-post:</b> <a href="mailto:${e.epost}">${e.epost}</a></p>
+//             ${e.kursansvar ? `<p><b>Kursanvsar:</b> ${e.kursansvar}</p>` : "<em>Ingen kursansvar</em>"}`
 
-function registerUser(){
-    name1 = document.getElementById("name1").value
-    name0 = document.getElementById("name0").value
-    addepost = document.getElementById("epost").value
-    addkontor = document.getElementById("kontor").value
-
-    staff.push({fornavn: name1, etternavn: name0, epost: addepost, kontor: addkontor})
-}
-
-registerUser()
+//         container.appendChild(card)
+//     })
+// }
 
