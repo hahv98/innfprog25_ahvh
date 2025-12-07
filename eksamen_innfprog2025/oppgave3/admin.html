@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/style.css" type="text/css">
     <title>Fiktiv Høgskole - administrasjon</title>
 </head>
 <body>
@@ -14,26 +15,26 @@
             <h2>Legg til ansatt</h2>
             <label for="firstname">
                 <p>Fornavn</p>
-                <input type="text">
+                <input type="text" name="fornavn" id="name1">
             </label>
             <label for="lastname">
                 <p>Etternavn</p>
-                <input type="text">
+                <input type="text" name="etternavn" id="name0">
             </label>
             <label for="email">
                 <p>E-post</p>
-                <input type="email">
+                <input type="email" name="email" id="epost">
             </label>
             <label for="office">
                 <p>Kontor</p>
-                <input type="text">
+                <input type="text" name="kontor" id="kontor">
             </label>
-            <label for="stilling">
+            <label for="stilling" name="rolle" id="role">
                 <p>Stilling</p>
                 
             </label>
             <label for="kurs">
-                <p>E-post</p>
+                <p>Kursansvar</p>
                 <input type="text">
             </label>
             <button class="admin-btn" id="addemp">Legg til ansatt</button>

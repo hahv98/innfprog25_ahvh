@@ -64,8 +64,26 @@ function showAllKurs(staff, elementId){
     .filter((kurs, index, arr) => arr.indexOf(kurs) === index)
     .sort()
 
-    document.getElementById(elementId).innerHTML = 
-        allKurs.map(kurs => `<li>${kurs}</li>`).join("")
+    document.getElementById(elementId).innerHTML = allKurs.map(kurs => `<li>${kurs}</li>`).join("")
 }
 
 showAllKurs(staff, "kursliste")
+
+
+//#OPPG3 - Legge til og fjerne en ansatt via HTML
+
+const addbtn = document.getElementById("addemp")
+
+addbtn.addEventListener("click", registerUser)
+
+function registerUser(){
+    name1 = document.getElementById("name1").value
+    name0 = document.getElementById("name0").value
+    addepost = document.getElementById("epost").value
+    addkontor = document.getElementById("kontor").value
+
+    staff.push({fornavn: name1, etternavn: name0, epost: addepost, kontor: addkontor})
+}
+
+registerUser()
+
