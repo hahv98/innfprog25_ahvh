@@ -22,6 +22,9 @@ function showStaff(staff) {
     })
 }
 
+
+//Gjort samtidig med #OPPG3
+
 function filterStaff(type){
     if(type === "alle"){
         return showStaff(staff)
@@ -51,15 +54,18 @@ $("[data-filter]").click(function(){
 
 showStaff(staff)
 
-//Design før samling til en funksjon
-// $("[data-filter='alle']").click(function(){
-//     showStaff(staff)
-// })
-// $("[data-filter='administrasjon']").click(function(){
-//     const filtered = staff.filter(e => admin.includes(e.stilling))
-//     showStaff(filtered)
-// })
-// $("[data-filter='undervisere']").click(function(){
-//     const filtered = staff.filter(e => teach.includes(e.stilling))
-//     showStaff(filtered)
-// })
+
+//Gjort samtidig med #OPPG3
+
+function showAllKurs(staff, elementId){
+    const allKurs = staff
+    
+    .flatMap(k => Array.isArray(k.kursansvar) ? k.kursansvar : [])
+    .filter((kurs, index, arr) => arr.indexOf(kurs) === index)
+    .sort()
+
+    document.getElementById(elementId).innerHTML = 
+        allKurs.map(kurs => `<li>${kurs}</li>`).join("")
+}
+
+showAllKurs(staff, "kursliste")

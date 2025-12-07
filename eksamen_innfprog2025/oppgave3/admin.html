@@ -6,6 +6,44 @@
     <title>Fiktiv Høgskole - administrasjon</title>
 </head>
 <body>
-    
+    <header>
+        <h1>Fiktiv Høgskole - Ansatt register</h1>
+    </header>
+    <main>
+        <section>
+            <h2>Legg til ansatt</h2>
+            <label for="firstname">
+                <p>Fornavn</p>
+                <input type="text">
+            </label>
+            <label for="lastname">
+                <p>Etternavn</p>
+                <input type="text">
+            </label>
+            <label for="email">
+                <p>E-post</p>
+                <input type="email">
+            </label>
+            <label for="office">
+                <p>Kontor</p>
+                <input type="text">
+            </label>
+            <label for="stilling">
+                <p>Stilling</p>
+                
+            </label>
+            <label for="kurs">
+                <p>E-post</p>
+                <input type="text">
+            </label>
+            <button class="admin-btn" id="addemp">Legg til ansatt</button>
+        </section>
+        <section>
+            <h2>Ansatte</h2>
+            <div id="staff-list" class="staff-container"></div>
+        </section>
+    </main>
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script type="module" src="../oppgave1/actions.js"></script>
 </body>
 </html>
