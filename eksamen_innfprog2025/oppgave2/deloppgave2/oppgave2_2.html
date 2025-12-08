@@ -15,21 +15,27 @@
                 let lengste = "";
                 for (let i = 0; i < liste.length; i++) {
                     let ord = liste[i];
-                    if (ord.length > lengste.length) {
-                        lengste = ord;
-                    } else {
-                        // gjør ingenting
-                    }
+                    ord.length > lengste.length ? lengste = ord : null
+                    /* if (ord.length > lengste.length) {
+                         lengste = ord;
+                     } 
+                     else {
+                         // gjør ingenting
+                     } */
+//NOTAT: Siden else delen ikke gjør noe, er den heller ikke nødvendig å skrive.
+//NOTAT2: Hele if testen kan byttes til en ternary operator for kortere/enklere kode.
                 }
                 return lengste;
             }
 
-            function skrivUtResultat() {
-                let resultat = finnLengsteOrd(ordListe);
-                console.log("Det lengste ordet i listen er: " + resultat);
-            }
+            console.log("Det lengste ordet i listen er: " + finnLengsteOrd(ordListe))
+            // function skrivUtResultat() {
+            //     let resultat = finnLengsteOrd(ordListe);
+            //     console.log("Det lengste ordet i listen er: " + resultat);
+            // }
 
-            skrivUtResultat();
+            // skrivUtResultat();
+//NOTAT: Hele skrivUtResultat() funksjonen er overfladisk, kan skrives direkte ut, da det er innenfor en funksjon( start() ). 
         }
 
         start();
@@ -43,16 +49,18 @@
                 { navn: "Anne", alder: 41 }
             ];
 
+
             function hentAldre(liste) {
                 let alderArray = [];
                 for (let i = 0; i < liste.length; i++) {
                     let person = liste[i];
                     alderArray.push(person.alder);
                 }
-                return alderArray;
-            }
+                //return alderArray;
+            //}
 
-            function regnUtGjennomsnitt(alderArray) {
+            //function regnUtGjennomsnitt(alderArray) {
+//NOTAT: hentAldre() og regnUtGjennomsnitt() kan slås sammen til en funksjon
                 let sum = 0;
                 for (let i = 0; i < alderArray.length; i++) {
                     sum = sum + alderArray[i];
@@ -63,7 +71,7 @@
 
             function visResultat() {
                 let alderArray = hentAldre(personer);
-                let gjennomsnitt = regnUtGjennomsnitt(alderArray);
+                let gjennomsnitt = alderArray //regnUtGjennomsnitt(alderArray); //NOTAT: siden funksjonen ble fjernet, bruker jeg heller variabelen istedenfor.
                 console.log("Gjennomsnittsalderen er " + gjennomsnitt);
             }
 
