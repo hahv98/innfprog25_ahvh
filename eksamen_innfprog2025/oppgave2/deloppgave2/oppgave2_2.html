@@ -50,32 +50,24 @@
             ];
 
 
-            function regnGjennomsnitt(){
-                let totalAlder = 0
-                //For-loop som legger sammen totalalderen fra alle personene(objektene) i arrayet "personer".
-                for (let i = 0; i < personer.length; i++){
-                    totalAlder += personer[i].alder
-                }
-            
-                //Kort og enkel kalkulering for gjennomsnittsalder. den sammenlagte totalen av alle aldrene, delt på antall objekter("personer") i arrayet gir resultatet.    
-                const gjennomsnitt = totalAlder / personer.length
 
-                console.log("Gjennomsnittsalderen er " + gjennomsnitt)
-            }
-            regnGjennomsnitt()
-           
 //NOTAT: Hele utregningen kan kortes ned ved bruk av mindre variabler og mer direkte kalkulering.       
-//             function hentAldre(liste) {
-//                 let alderArray = [];
-//                 for (let i = 0; i < liste.length; i++) {
-//                     let person = liste[i];
-//                     alderArray.push(person.alder);
-//                 }
-//                 //return alderArray;
-//             //}
+            function hentAldre() {
+                let alderArray = 0;
+                for (let i = 0; i < personer.length; i++) { //Endret for-loopen til å legge sammen totalen av alle aldrene fra personene(objektene).
+                    let person = personer[i];
+                    alderArray += personer[i].alder
+                }
 
+                //Kort og enkel kalkulering for gjennomsnittsalder. Den sammenlagte totalen av alle aldre, delt på antall objekter("personer") i arrayet gir resultatet.
+                const gjennomsnitt = alderArray / personer.length
+                console.log("Gjennomsnittsalderen er " + gjennomsnitt)
+                //return alderArray;
+            }
+            hentAldre()
+
+// //NOTAT: regnUtGjennomsnitt() og visResultat() blir som smør på flesk, når funksjonen funker på samme vis med den ene funksjonen hentAldre().
 //             //function regnUtGjennomsnitt(alderArray) {
-// //NOTAT: hentAldre() og regnUtGjennomsnitt() kan slås sammen til en funksjon
 //                 let sum = 0;
 //                 for (let i = 0; i < alderArray.length; i++) {
 //                     sum = sum + alderArray[i];

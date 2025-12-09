@@ -13,34 +13,31 @@
     <main>
         <section class="filterselect">
             <nav class="filter-section">
-                <button class="filter-btn" data-filter="alle">Vis alle ansatte</button>
-                <button class="filter-btn" data-filter="administrasjon">Vis administrasjon</button>
-                <button class="filter-btn" data-filter="undervisere">Vis undervisere</button>
+                <button class="btn" data-role="all">Alle</button>
+                <button class="btn" data-role="admin">Administrasjon</button>
+                <button class="btn" data-role="teach">Undervisere</button>
             </nav>
-        
             <nav class="subfilters">
                 Vis kun stilling:
-                <button class="filter-role" data-filter="Rektor">Rektor</button>
-                <button class="filter-role" data-filter="Dekan">Dekan</button>
-                <button class="filter-role" data-filter="Vaktmester">Vaktmester</button>
-                <button class="filter-role" data-filter="Professor">Professor</button>
-                <button class="filter-role" data-filter="Lektor">Lektor</button>
+                <button class="btn" data-role="Rektor">Rektor</button>
+                <button class="btn" data-role="Dekan">Dekan</button>
+                <button class="btn" data-role="Vaktmester">Vaktmester</button>
+                <button class="btn" data-role="Professor">Professor</button>
+                <button class="btn" data-role="Lektor">Lektor</button>
             </nav>
         </section>
-
         <section>
             <h2>Ansatte</h2>
-            <div id="staff-list" class="staff-container"></div>
+            <section id="staff-list" class="staff-container"></section>
         </section>
-        <section class="kursliste">
+        <section class="kurs-liste">
             <h2>Kursoversikt</h2>
-            <ul id="kursliste"></ul>
+            <section id="kursliste"></section>
         </section>
     </main>
 
     
 
-    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
     <script type="module" src="../oppgave1/actions.js"></script>
 </body>
 </html>

@@ -11,36 +11,41 @@
         <h1>Fiktiv Høgskole - Ansatt register</h1>
     </header>
     <main>
-        <form class="addUser">
-            <h2>Legg til ansatt</h2>
-            <label for="fornavn">Fornavn:</label>
-            <input type="text" name="fornavn" id="fornavn" required>
-            
-            <label for="etternavn">Etternavn:</label>
-            <input type="text" name="etternavn" id="etternavn" required>
-            
-            <label for="epost">E-post:</label>
-            <input type="email" name="email" id="epost" required>
-            
-            <label for="kontor">Kontor:</label>
-                <input type="text" name="kontor" id="kontor" required>
-            
-            <label for="rolelist">Stilling:</label>
-            <select id="rolelist">
-                <option value="">Velg stilling</option>
-            </select>
+        <section>
+            <form class="addUser">
+                <h2>Legg til ansatt</h2>
+                <label for="fornavn">Fornavn:</label>
+                <input type="text" name="fornavn" id="fornavn" placeholder="Fornavn" required>
+                
+                <label for="etternavn">Etternavn:</label>
+                <input type="text" name="etternavn" id="etternavn" placeholder="Etternavn" required>
+                
+                <label for="epost">E-post:</label>
+                <input type="email" name="email" id="epost" placeholder="fornavn.etternavn@prog.no" required>
+                
+                <label for="kontor">Kontor:</label>
+                    <input type="text" name="kontor" id="kontor" placeholder="X-000" required>
+                
+                <label for="role-list">Stilling:</label>
+                <select id="rolelist">
+                    <option value="">Velg stilling</option>
+                </select>
 
-            <label for="kurs">Kursansvar:</label>
-            <input type="text" placeholder="Komma(,) for separering" id="kurs">
-            
-            <button class="admin-btn" id="addemp">Legg til ansatt</button>
-        </form>
+                <label for="kurs">Kursansvar:</label>
+                <input type="text" placeholder="Komma(,) for separering" id="kurs">
+                
+                <button class="btn" id="addemp" type="submit">Legg til ansatt</button>
+            </form>
+        </section>
         <section>
             <h2>Ansatte</h2>
-            <div id="staff-list" class="staff-container"></div>
+            <section id="staff-list" class="staff-show"></section>
+        </section>
+        <section class="kurs-liste hidden">
+            <h2>Kursoversikt</h2>
+            <section id="kursliste"></section>
         </section>
     </main>
-    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
     <script type="module" src="../oppgave1/actions.js"></script>
 </body>
 </html>
